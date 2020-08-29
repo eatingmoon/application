@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ActionButton from 'react-native-action-button';
 import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
 
+import Modal from '../../components/Modal';
+
 import plusIconSvg from '../../assets/plus.svg';
 
 export default () => {
+  const [isCreateModalShown, setIsCreateModalShown] = useState<boolean>(false);
+
   return (
     <>
       <ActionButton
@@ -21,6 +25,15 @@ export default () => {
             height: 3,
           },
         }}
+        onPress={() => setIsCreateModalShown(true)}
+      />
+      <Modal
+        isVisible={isCreateModalShown}
+        onPressConfirm={() => setIsCreateModalShown(false)}
+        title="제작하기"
+        description="무엇을 제작하실지 선택해 주세요."
+        leftIcon="전시회"
+        rightIcon="작품"
       />
     </>
   );
