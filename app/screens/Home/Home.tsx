@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import Header from './Header';
 import Carousel from './Carousel';
 import Section from './Section';
-import ExhibitionList from './ExhibitionList';
+import ExhibitionList from '../../components/ExhibitionList';
 import Divider from '../../components/Divider';
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 
