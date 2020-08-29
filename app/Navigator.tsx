@@ -10,12 +10,16 @@ const Navigator: React.FC = () => (
   <NavigationContainer
     theme={{
       colors: {
-        background: '#F7F7F7',
+        background: '#FFFFFF',
       },
     } as any}
   >
     <Stack.Navigator
       initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: false,
+      }}
     >
       <Stack.Screen
         name="Home"

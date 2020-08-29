@@ -15,11 +15,10 @@ export default () => {
         source={logoImage}
       />
       <IconList>
-        <TouchableIconContainer
-          style={{ marginRight: 7.9 }}
-        >
+        <TouchableIconContainer>
           <SearchIcon />
         </TouchableIconContainer>
+        <IconListGap />
         <TouchableIconContainer>
           <ProfileIcon />
         </TouchableIconContainer>
@@ -30,6 +29,7 @@ export default () => {
 
 const Container = styled.View`
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 32.5px 0;
@@ -44,6 +44,7 @@ const LogoImage = styled.Image`
 
 const IconList = styled.View`
   display: flex;
+  flex-direction: row;
   align-items: center;
 `;
 
@@ -66,4 +67,9 @@ const ProfileIcon = styled(SvgXml).attrs({
   color: '#ac92ec',
   xml: profileIconSvg,
 })`
+`;
+
+const IconListGap = styled.View`
+  width: 7.9px;
+  height: 7.9px;
 `;

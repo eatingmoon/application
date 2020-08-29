@@ -17,10 +17,8 @@ export default () => {
 const Container = styled.ScrollView.attrs({
   contentContainerStyle: {
     paddingHorizontal: screenWidth * 0.05,
-    flexDirection: 'row',
   },
   horizontal: true,
   showsHorizontalScrollIndicator: false,
 })`
-  flex-direction: row;
 `;

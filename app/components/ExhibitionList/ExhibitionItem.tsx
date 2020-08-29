@@ -34,14 +34,12 @@ export default () => {
 
 const Container = styled.View`
   width: 130px;
-  height: 130px;
-  margin-right: ${screenWidth * 0.05};
+  margin-right: ${screenWidth * 0.05}px;
 `;
 
 const ExhibitionImage = styled.Image`
   width: 130px;
   height: 130px;
-  object-fit: contain;
   border-radius: 5px;
 `;
 
@@ -49,12 +47,15 @@ const ExhibitionTitle = styled.Text`
   font-size: 18px;
   line-height: ${18 * 1.22}px;
   color: #343a40;
+  margin-top: 11px;
 `;
 
 const ExhibitionInformation = styled.View`
   width: 100%;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 5px;
 `;
 
 const CreatorName = styled.Text`
@@ -64,6 +65,7 @@ const CreatorName = styled.Text`
 `;
 
 const RatingWrapper = styled.View`
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;

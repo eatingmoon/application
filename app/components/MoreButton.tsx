@@ -2,7 +2,7 @@ import React from 'react';
 import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
 
-import leftIconSvg from '../../assets/left.svg';
+import leftIconSvg from '../assets/left.svg';
 
 export default () => (
   <Container>
@@ -21,7 +21,8 @@ const Container = styled.View`
 const MoreText = styled.Text`
   font-size: 14px;
   color: #7a5cc5;
-  margin-right: 9.8px;
+  margin-right: 4.8px;
+  font-weight: bold;
 `;
 
 const MoreIcon = styled(SvgXml).attrs({
