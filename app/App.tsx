@@ -1,19 +1,22 @@
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SafeAreaView from 'react-native-safe-area-view';
+import styled from 'styled-components/native';
 
 import Navigator from './Navigator';
 
 const App: React.FC = () => {
   return (
     <SafeAreaProvider>
-      <SafeAreaView
-        style={{ flex: 1 }}
-      >
+      <SafeAreaContainer>
         <Navigator />
-      </SafeAreaView>
+      </SafeAreaContainer>
     </SafeAreaProvider>
   );
 };
 
 export default App;
+
+const SafeAreaContainer = styled(SafeAreaView)`
+  flex: 1;
+`;
