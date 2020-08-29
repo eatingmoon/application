@@ -20,7 +20,7 @@ export default () => {
 };
 
 const Container = styled.View`
-  width: ${screenWidth * 0.85}px;
+  width: ${screenWidth * 0.9}px;
   height: 233px;
   position: relative;
   background-color: #7a5cc5;

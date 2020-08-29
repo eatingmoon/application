@@ -34,7 +34,7 @@ const Container = styled.View`
   justify-content: space-between;
   padding: 32.5px 0;
   margin: 0 auto;
-  width: ${screenWidth}px;
+  width: ${screenWidth * 0.9}px;
 `;
 
 const LogoImage = styled.Image`
