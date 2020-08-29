@@ -6,7 +6,11 @@ interface IPrimary {
   isPrimary?: boolean;
 }
 
-interface IButton extends IPrimary {
+interface IBiggerText {
+  isBiggerText?: boolean;
+}
+
+interface IButton extends IPrimary, IBiggerText {
   children?: React.ReactNode;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
@@ -17,6 +21,7 @@ export default ({
   onPress,
   style = {},
   isPrimary = false,
+  isBiggerText = false,
 }: IButton) => {
   return (
     <TouchableWrapper
@@ -28,6 +33,7 @@ export default ({
       >
         <ButtonText
           isPrimary={isPrimary}
+          isBiggerText={isBiggerText}
         >
           {children}
         </ButtonText>
@@ -52,7 +58,7 @@ const ButtonContainer = styled.View<IPrimary>`
   `};
 `;
 
-const ButtonText = styled.Text<IPrimary>`
+const ButtonText = styled.Text<IPrimary & IBiggerText>`
   font-weight: bold;
   font-size: 15px;
   line-height: ${15 * 1.2}px;
@@ -60,5 +66,10 @@ const ButtonText = styled.Text<IPrimary>`
 
   ${({ isPrimary = false }) => isPrimary && css`
     color: white;
+  `};
+
+  ${({ isBiggerText = false }) => isBiggerText && css`
+    font-size: 25px;
+    line-height: ${25 * 1.2}px;
   `};
 `;
