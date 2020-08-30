@@ -1,16 +1,20 @@
-import React from 'react';
-import { SvgXml } from 'react-native-svg';
-import styled from 'styled-components/native';
+import React from "react";
+import { SvgXml } from "react-native-svg";
+import { useNavigation } from "@react-navigation/native";
 
-import { screenWidth } from '../../utils/screenSize';
+import styled from "styled-components/native";
 
-import logoImage from '../../assets/logo.png';
-import leftIconSvg from '../../assets/left-header.svg';
+import { screenWidth } from "../../utils/screenSize";
+
+import logoImage from "../../assets/logo.png";
+import leftIconSvg from "../../assets/left-header.svg";
 
 export default () => {
+  const navigation = useNavigation();
+
   return (
     <Container>
-      <LeftIconWrapper>
+      <LeftIconWrapper onPress={() => navigation.goBack()}>
         <LeftIcon />
       </LeftIconWrapper>
       <LogoImage source={logoImage} />
@@ -27,16 +31,14 @@ const Container = styled.View`
   align-items: center;
 `;
 
-const LeftIconWrapper = styled.TouchableWithoutFeedback`
-`;
+const LeftIconWrapper = styled.TouchableWithoutFeedback``;
 
 const LeftIcon = styled(SvgXml).attrs({
   xml: leftIconSvg,
   width: 10.1,
   height: 19.8,
-  color: '#7a5cc5',
-})`
-`;
+  color: "#7a5cc5",
+})``;
 
 const LogoImage = styled.Image`
   width: 37.6px;
