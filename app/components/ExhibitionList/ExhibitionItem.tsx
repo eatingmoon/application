@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
@@ -8,29 +9,38 @@ import starIconSvg from '../../assets/star.svg';
 import placeholderImage from '../../assets/placeholder-night.png';
 
 export default () => {
+  const navigation = useNavigation();
+
   return (
-    <Container>
-      <ExhibitionImage
-        source={placeholderImage}
-      />
-      <ExhibitionTitle>
-        하얗고 반투명한{'\n'}
-        캔버스들의 모임
-      </ExhibitionTitle>
-      <ExhibitionInformation>
-        <CreatorName>
-          권순재
-        </CreatorName>
-        <RatingWrapper>
-          <RatingIcon />
-          <RatingScore>
-            4.9
-          </RatingScore>
-        </RatingWrapper>
-      </ExhibitionInformation>
-    </Container>
+    <TouchableWrapper
+      onPress={() => navigation.navigate('ViewExhibition')}
+    >
+      <Container>
+        <ExhibitionImage
+          source={placeholderImage}
+        />
+        <ExhibitionTitle>
+          하얗고 반투명한{'\n'}
+          캔버스들의 모임
+        </ExhibitionTitle>
+        <ExhibitionInformation>
+          <CreatorName>
+            권순재
+          </CreatorName>
+          <RatingWrapper>
+            <RatingIcon />
+            <RatingScore>
+              4.9
+            </RatingScore>
+          </RatingWrapper>
+        </ExhibitionInformation>
+      </Container>
+    </TouchableWrapper>
   );
 };
+
+const TouchableWrapper = styled.TouchableWithoutFeedback`
+`;
 
 const Container = styled.View`
   width: 130px;
