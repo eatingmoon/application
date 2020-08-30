@@ -3,11 +3,13 @@ import styled from 'styled-components/native';
 
 import FormWrapper from './FormWrapper';
 import BasicSettings from './BasicSettings';
+import PieceSettings from './PieceSettings';
 
 export default () => {
   return (
     <FormWrapper>
-      <BasicSettings />
+      {/* <BasicSettings /> */}
+      <PieceSettings />
     </FormWrapper>
   );
 };

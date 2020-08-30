@@ -52,6 +52,7 @@ const ButtonContainer = styled.View<IPrimary>`
   border: solid 2px #7a5cc5;
   width: 100%;
   padding: 17px 0;
+  background-color: white;
 
   ${({ isPrimary = false }) => isPrimary && css`
     background-color: #7a5cc5;
