@@ -66,6 +66,7 @@ export default () => {
         onPressLeftButton={() => navigation.navigate('Home')}
         rightButton="전시회 입장"
         isRightButtonPrimary={true}
+        onPressRightButton={() => navigation.navigate('ViewExhibition')}
         isConfirmedWhenBackdropPressed={false}
       />
     </FormWrapper>

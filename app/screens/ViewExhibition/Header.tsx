@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
@@ -8,9 +9,13 @@ import logoImage from '../../assets/logo.png';
 import leftIconSvg from '../../assets/left-header.svg';
 
 export default () => {
+  const navigation = useNavigation();
+
   return (
     <Container>
-      <LeftIconWrapper>
+      <LeftIconWrapper
+        onPress={() => navigation.goBack()}
+      >
         <LeftIcon />
       </LeftIconWrapper>
       <LogoImage source={logoImage} />
