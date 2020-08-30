@@ -51,6 +51,6 @@ const Input = styled.TextInput`
   font-size: 18px;
   line-height: ${18 * 1.22}px;
   color: #868e96;
-  padding: 19px 14px;
+  padding: 16px 14px;
   width: ${screenWidth * 0.8}px;
 `;

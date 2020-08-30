@@ -1,9 +1,13 @@
 import React from 'react';
+import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
 
 import { screenWidth } from '../../utils/screenSize';
 
 import FormTextInput from './FormTextInput';
+import FormHashtagInput from './FormHashtagInput';
+
+import cameraIconSvg from '../../assets/camera.svg';
 
 export default () => {
   return (
@@ -13,6 +17,7 @@ export default () => {
           <CoverImageText>
             커버 사진 선택
           </CoverImageText>
+          <CameraIcon />
         </CoverImageTextWrapper>
       </CoverImageBackground>
       <FormTextInput
@@ -25,6 +30,9 @@ export default () => {
         multiline
         style={{ height: 131 }}
       />
+      <FormHashtagInput
+        field="전시회 해시태그"
+      />
     </Container>
   );
 };
@@ -35,9 +43,9 @@ const Container = styled.View`
 `;
 
 const CoverImageBackground = styled.View`
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   width: ${screenWidth * 0.8}px;
-  height: 222px;
+  height: 215px;
   background: #7a5cc5;
   border-radius: 12px;
   position: relative;
@@ -45,6 +53,9 @@ const CoverImageBackground = styled.View`
 
 const CoverImageTextWrapper = styled.View`
   position: absolute;
+  right: 18.8px;
+  bottom: 14.2px;
+  flex-direction: row;
 `;
 
 const CoverImageText = styled.Text`
@@ -52,4 +63,13 @@ const CoverImageText = styled.Text`
   font-size: 18px;
   line-height: ${18 * 1.22}px;
   color: #ffffff;
+  margin-right: 10.7px;
+`;
+
+const CameraIcon = styled(SvgXml).attrs({
+  width: 26.4,
+  height: 22,
+  color: 'white',
+  xml: cameraIconSvg,
+})`
 `;
