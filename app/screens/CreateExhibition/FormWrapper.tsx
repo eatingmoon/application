@@ -6,24 +6,37 @@ import ViewContainer from '../../components/ContentWrapper/ViewContainer';
 import { screenWidth } from '../../utils/screenSize';
 
 interface IFormWrapper {
+  title?: string;
+  progress?: number;
   children?: React.ReactNode;
+  onPressLeft?: () => void;
+  onPressRight?: () => void;
+  rightButton?: string;
 }
 
-export default ({ children }: IFormWrapper) => {
+export default ({ title, progress, children, onPressLeft, onPressRight, rightButton = '다음' }: IFormWrapper) => {
   return (
     <ViewContainer>
       <Container>
         <StatusContainer>
-          <StatusCircle isSelected />
-          <StatusCircle />
-          <StatusCircle />
+          {[...Array(3)].map((_: undefined, statusIndex: number) => (
+            <StatusCircle
+              key={`status-${statusIndex}`}
+              isSelected={statusIndex === progress}
+            />
+          ))}
         </StatusContainer>
-        <Title>기본 설정</Title>
+        <Title>{title}</Title>
       </Container>
       {children}
       <ButtonList>
-        <FormButton>이전</FormButton>
-        <FormButton isPrimary>다음</FormButton>
+        <FormButton onPress={onPressLeft}>이전</FormButton>
+        <FormButton
+          isPrimary
+          onPress={onPressRight}
+        >
+          {rightButton}
+        </FormButton>
       </ButtonList>
     </ViewContainer>
   );

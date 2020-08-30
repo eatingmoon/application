@@ -57,7 +57,7 @@ const PieceContainer = styled.View`
 const BottomButton = styled(Button)`
   font-weight: bold;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: ${20 * 1.2}px;
   color: #ffffff;
   margin-top: 20px;
   padding: 16px 0;
