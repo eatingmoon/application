@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
 import Home from './screens/Home';
+import CreateExhibition from './screens/CreateExhibition';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,10 @@ const Navigator: React.FC = () => (
       <Stack.Screen
         name="Home"
         component={Home}
+      />
+      <Stack.Screen
+        name="CreateExhibition"
+        component={CreateExhibition}
       />
     </Stack.Navigator>
   </NavigationContainer>

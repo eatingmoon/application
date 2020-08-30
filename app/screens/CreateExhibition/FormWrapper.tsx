@@ -23,7 +23,7 @@ export default ({ children }: IFormWrapper) => {
       {children}
       <ButtonList>
         <FormButton>이전</FormButton>
-        <FormButton>다음</FormButton>
+        <FormButton isPrimary>다음</FormButton>
       </ButtonList>
     </ViewContainer>
   );
@@ -57,7 +57,7 @@ const StatusCircle = styled.View<IStatusCircle>`
 
 const Title = styled.Text`
   margin-top: 12px;
-  font-weight: medium;
+  font-weight: 500;
   font-size: 30px;
   line-height: ${30 * 1.2}px;
   color: #000000;
@@ -69,4 +69,5 @@ const ButtonList = styled.View`
   left: 0;
   right: 0;
   width: 100%;
+  flex-direction: row;
 `;

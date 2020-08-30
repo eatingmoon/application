@@ -12,10 +12,12 @@ interface IModal {
   description?: string;
   onPressConfirm?: () => void;
   isConfirmedWhenBackdropPressed?: boolean;
-  leftIcon?: React.ReactNode;
-  isLeftIconPrimary?: boolean;
-  rightIcon?: React.ReactNode;
-  isRightIconPrimary?: boolean;
+  leftButton?: React.ReactNode;
+  isLeftButtonPrimary?: boolean;
+  onPressLeftButton?: () => void;
+  rightButton?: React.ReactNode;
+  isRightButtonPrimary?: boolean;
+  onPressRightButton?: () => void;
 }
 
 const Modal: React.FC<IModal> = ({
@@ -24,13 +26,30 @@ const Modal: React.FC<IModal> = ({
   description,
   onPressConfirm,
   isConfirmedWhenBackdropPressed = true,
-  leftIcon = '',
-  isLeftIconPrimary = false,
-  rightIcon = '',
-  isRightIconPrimary = false,
+  leftButton = '',
+  isLeftButtonPrimary = false,
+  onPressLeftButton,
+  rightButton = '',
+  isRightButtonPrimary = false,
+  onPressRightButton,
 }) => {
   const onBackdropPress = isConfirmedWhenBackdropPressed
     ? onPressConfirm : undefined;
+
+  const onPressLeft = () => {
+    if (onPressLeftButton)
+      onPressLeftButton();
+    if (onPressConfirm)
+      onPressConfirm();
+  };
+
+  const onPressRight = () => {
+    if (onPressRightButton) {
+      onPressRightButton();
+    }
+    if (onPressConfirm)
+    onPressConfirm();
+  };
 
   return (
     <RNModal
@@ -49,14 +68,16 @@ const Modal: React.FC<IModal> = ({
         )}
         <ButtonList>
           <ModalButton
-            isPrimary={isLeftIconPrimary}
+            isPrimary={isLeftButtonPrimary}
+            onPress={onPressLeft}
           >
-            {leftIcon}
+            {leftButton}
           </ModalButton>
           <ModalButton
-            isPrimary={isRightIconPrimary}
+            isPrimary={isRightButtonPrimary}
+            onPress={onPressRight}
           >
-            {rightIcon}
+            {rightButton}
           </ModalButton>
         </ButtonList>
       </ModalContainer>
