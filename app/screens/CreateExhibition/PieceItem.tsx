@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import placeholderFox from '../../assets/placeholder-fox.png';
+
 export default ({ index }: {index: number}) => {
   return (
-    <Container>
+    <Container source={placeholderFox}>
       <Badge>
         <BadgeText>{index}</BadgeText>
       </Badge>
