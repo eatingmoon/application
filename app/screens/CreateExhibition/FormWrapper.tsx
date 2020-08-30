@@ -32,6 +32,7 @@ export default ({ children }: IFormWrapper) => {
 const Container = styled.View`
   width: ${screenWidth * 0.8}px;
   padding: 32px 0;
+  padding-bottom: 18px;
 `;
 
 const StatusContainer = styled.View`
