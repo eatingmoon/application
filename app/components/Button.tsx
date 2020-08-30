@@ -8,6 +8,7 @@ interface IPrimary {
 
 interface IBiggerText {
   isBiggerText?: boolean;
+  isMediumText?: boolean;
 }
 
 interface IButton extends IPrimary, IBiggerText {
@@ -21,6 +22,7 @@ export default ({
   onPress,
   style = {},
   isPrimary = false,
+  isMediumText = false,
   isBiggerText = false,
 }: IButton) => {
   return (
@@ -34,6 +36,7 @@ export default ({
         <ButtonText
           isPrimary={isPrimary}
           isBiggerText={isBiggerText}
+          isMediumText={isMediumText}
         >
           {children}
         </ButtonText>
