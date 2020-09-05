@@ -1,11 +1,15 @@
 import React from 'react';
 import { StyleProp, ImageStyle, ImageSourcePropType } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import AuthHeader from './AuthHeader';
 import ScrollContainer from '../ScrollContainer';
 
-interface IAuthContainer {
+interface IsAlignedRight {
+  isAlignedRight?: boolean;
+}
+
+interface IAuthContainer extends IsAlignedRight {
   title: string;
   description: string;
   children?: React.ReactNode;
@@ -16,6 +20,7 @@ interface IAuthContainer {
 export default ({
   title,
   description,
+  isAlignedRight = false,
   children,
   image,
   imageStyle,
@@ -27,10 +32,14 @@ export default ({
       </AuthHeader>
       <Wrapper>
         <Container>
-          <Title>
+          <Title
+            isAlignedRight={isAlignedRight}
+          >
             {title}
           </Title>
-          <Description>
+          <Description
+            isAlignedRight={isAlignedRight}
+          >
             {description}
           </Description>
         </Container>
@@ -57,19 +66,27 @@ const Container = styled.View`
   position: relative;
 `;
 
-const Title = styled.Text`
+const Title = styled.Text<IsAlignedRight>`
   margin-top: 30.4px;
   font-weight: 300;
   font-size: 32px;
   line-height: ${32 * 1.11}px;
   color: #343a40;
+
+  ${({ isAlignedRight = false }) => isAlignedRight && css`
+    text-align: right;
+  `};
 `;
 
-const Description = styled.Text`
+const Description = styled.Text<IsAlignedRight>`
   font-weight: 500;
   font-size: 14px;
   line-height: ${14 * 3}px;
   color: #868e96;
+
+  ${({ isAlignedRight = false }) => isAlignedRight && css`
+    text-align: right;
+  `};
 `;
 
 const AbsoluteImage = styled.Image.attrs({
