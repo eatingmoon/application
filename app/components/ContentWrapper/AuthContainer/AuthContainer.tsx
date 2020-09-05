@@ -1,14 +1,25 @@
 import React from 'react';
+import { StyleProp, ImageStyle, ImageSourcePropType } from 'react-native';
 import styled from 'styled-components/native';
 
 import AuthHeader from './AuthHeader';
 import ScrollContainer from '../ScrollContainer';
 
 interface IAuthContainer {
+  title: string;
+  description: string;
   children?: React.ReactNode;
+  image?: ImageSourcePropType;
+  imageStyle?: StyleProp<ImageStyle>;
 }
 
-export default ({ children }: IAuthContainer) => {
+export default ({
+  title,
+  description,
+  children,
+  image,
+  imageStyle,
+}: IAuthContainer) => {
   return (
     <ScrollContainer>
       <AuthHeader>
@@ -17,15 +28,18 @@ export default ({ children }: IAuthContainer) => {
       <Wrapper>
         <Container>
           <Title>
-            이름과 함께{'\n'}
-            널리에서 사용할{'\n'}
-            아이디를{'\n'}
-            정해주세요.
+            {title}
           </Title>
           <Description>
-            여러분을 불러드릴 수 있게요.
+            {description}
           </Description>
         </Container>
+        {image && (
+          <AbsoluteImage
+            source={image}
+            style={imageStyle}
+          />
+        )}
       </Wrapper>
       {children}
     </ScrollContainer>
@@ -40,6 +54,7 @@ const Wrapper = styled.View`
 const Container = styled.View`
   width: 90%;
   padding-bottom: 146px;
+  position: relative;
 `;
 
 const Title = styled.Text`
@@ -55,4 +70,10 @@ const Description = styled.Text`
   font-size: 14px;
   line-height: ${14 * 3}px;
   color: #868e96;
+`;
+
+const AbsoluteImage = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
+  position: absolute;
 `;

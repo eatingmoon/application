@@ -44,7 +44,6 @@ const ButtonContainer = styled.View<IPrimary>`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 17px 0;
   background-color: white;
   border-radius: 7px;
   height: 58px;
