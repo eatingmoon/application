@@ -1,33 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 
+import forms, { IFormItem } from './forms';
 import FormTextInput from './FormTextInput';
 import FormButton from './FormButton';
 import AuthContainer from '../../components/ContentWrapper/AuthContainer';
 import { screenWidth } from '../../utils/screenSize';
+import FormSelect from './FormSelect';
 
 export default () => {
+  const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
+  const currentForm = forms[currentStepIndex];
+  const [userInfo, setUserInfo] = useState<any>({ gender: 'f' });
+
+  const onPressNextStep = () => {
+    if (currentStepIndex + 1 < forms.length) {
+      setCurrentStepIndex(currentStepIndex + 1);
+    }
+  };
+
   return (
     <AuthContainer
-      title={'이름과 함께\n널리에서 사용할\n아이디를\n정해주세요.'}
-      description="여러분을 불러드릴 수 있게요."
-      image={require('../../assets/illusts/nout.png')}
-      imageStyle={{
-        width: 259,
-        height: 209,
-        right: -90,
-        bottom: 7,
-      }}
+      header={`회원가입(${currentStepIndex + 1}/${forms.length})`}
+      title={currentForm.title}
+      description={currentForm.description}
+      image={currentForm.image}
+      imageStyle={currentForm.imageStyle}
+      isAlignedRight={currentForm.isAlignedRight}
     >
-      <FormTextInput
-        field="아이디"
-        placeholder="아이디를 입력하세요."
-      />
-      <FormTextInput
-        field="비밀번호"
-        placeholder="비밀번호를 입력하세요."
-      />
-      <FormButton>다음으로</FormButton>
+      {(currentForm.forms as IFormItem[]).map((value: IFormItem) => {
+        const { type, field, placeholder, key } = value;
+        if (type === 'text') {
+          return (
+            <FormTextInput
+              key={key}
+              field={field}
+              placeholder={placeholder}
+            />
+          );
+        }
+        return (
+          <FormSelect
+            key={key}
+            field={field}
+            value={userInfo.gender}
+            onChange={(v) => setUserInfo({ ...userInfo, gender: v })}
+            items={value.items}
+          />
+        );
+      })}
+      <FormButton
+        onPress={onPressNextStep}
+      >
+        다음으로
+      </FormButton>
     </AuthContainer>
   );
 };

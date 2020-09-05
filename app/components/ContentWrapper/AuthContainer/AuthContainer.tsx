@@ -10,6 +10,7 @@ interface IsAlignedRight {
 }
 
 interface IAuthContainer extends IsAlignedRight {
+  header?: React.ReactNode;
   title: string;
   description: string;
   children?: React.ReactNode;
@@ -18,6 +19,7 @@ interface IAuthContainer extends IsAlignedRight {
 }
 
 export default ({
+  header = '',
   title,
   description,
   isAlignedRight = false,
@@ -28,7 +30,7 @@ export default ({
   return (
     <ScrollContainer>
       <AuthHeader>
-        회원가입(1/3)
+        {header}
       </AuthHeader>
       <Wrapper>
         <Container>
