@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import FormTextInput from './FormTextInput';
+import FormButton from './FormButton';
+import TextButton from './TextButton';
 import { screenWidth } from '../../utils/screenSize';
 
 export default () => {
@@ -16,21 +19,50 @@ export default () => {
             널리
           </HeaderBiggerTitle>
         </HeaderTitle>
+        <FormContainer>
+          <FormTextInput
+            field="아이디"
+            placeholder="아이디를 입력하세요."
+          />
+          <FormTextInput
+            field="비밀번호"
+            placeholder="비밀번호를 입력하세요."
+          />
+          <ButtonContainer>
+            <FormButton>로그인</FormButton>
+            <FormButton
+              isPrimary
+              style={{ marginTop: 10 }}
+            >
+              회원가입
+            </FormButton>
+          </ButtonContainer>
+          <TextButton
+            style={{ marginTop: 18 }}
+          >
+            비밀번호를 잊으셨나요?
+          </TextButton>
+        </FormContainer>
       </ContentWrapper>
     </RelativeContainer>
   );
 };
 
-const RelativeContainer = styled.View`
+const RelativeContainer = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})`
   flex: 1;
   background-color: #a68be7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const ContentWrapper = styled.View`
-  padding-top: ${screenWidth * 0.1}px;
+  padding-top: ${screenWidth * 0.15}px;
+  padding-bottom: ${screenWidth * 0.15}px;
+  align-items: center;
+  width: 100%;
 `;
 
 const LogoImage = styled.Image.attrs({
@@ -42,7 +74,7 @@ const LogoImage = styled.Image.attrs({
 
 const HeaderTitle = styled.Text`
   font-size: 30px;
-  line-height: ${30 * 1.54};
+  line-height: ${30 * 1.54}px;
   color: #ffffff;
   text-align: center;
   margin-top: 12.9px;
@@ -51,9 +83,12 @@ const HeaderTitle = styled.Text`
 
 const HeaderBiggerTitle = styled.Text`
   font-size: 42px;
-  line-height: ${42 * 1.54};
+  line-height: ${42 * 1.54}px;
 `;
 
 const FormContainer = styled.View`
-  width: ${screenWidth * 0.9}px;
+`;
+
+const ButtonContainer = styled.View`
+  margin-top: 14px;
 `;
