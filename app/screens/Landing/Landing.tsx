@@ -74,6 +74,7 @@ const LogoImage = styled.Image.attrs({
 
 const HeaderTitle = styled.Text`
   font-size: 30px;
+  font-weight: 300;
   line-height: ${30 * 1.54}px;
   color: #ffffff;
   text-align: center;

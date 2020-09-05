@@ -40,6 +40,7 @@ const Field = styled.Text`
   width: ${screenWidth * 0.9}px;
   margin-bottom: 5px;
   font-size: 18px;
+  font-weight: 300;
   line-height: ${18 * 1.22}px;
   color: #ffffff;
   font-weight: bold;
@@ -49,6 +50,7 @@ const Input = styled.TextInput`
   border: solid 1px #ffffff;
   background-color: #ac92ec;
   font-size: 18px;
+  font-weight: 300;
   line-height: ${18 * 1.22}px;
   color: #ffffff;
   padding: 19px 14px;
