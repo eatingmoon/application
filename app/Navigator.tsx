@@ -4,6 +4,7 @@ import React from 'react';
 
 import Landing from './screens/Landing';
 import Home from './screens/Home';
+import Join from './screens/Join';
 import CreateExhibition from './screens/CreateExhibition';
 import ViewExhibition from './screens/ViewExhibition';
 
@@ -18,7 +19,7 @@ const Navigator: React.FC = () => (
     } as any}
   >
     <Stack.Navigator
-      initialRouteName="Landing"
+      initialRouteName="Join"
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,
@@ -27,6 +28,10 @@ const Navigator: React.FC = () => (
       <Stack.Screen
         name="Landing"
         component={Landing}
+      />
+      <Stack.Screen
+        name="Join"
+        component={Join}
       />
       <Stack.Screen
         name="Home"

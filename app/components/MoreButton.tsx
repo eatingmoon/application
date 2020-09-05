@@ -2,7 +2,7 @@ import React from 'react';
 import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
 
-import leftIconSvg from '../assets/left.svg';
+import rightIconSvg from '../assets/right.svg';
 
 export default () => (
   <Container>
@@ -29,6 +29,6 @@ const MoreIcon = styled(SvgXml).attrs({
   width: 5.2,
   height: 9.6,
   color: '#7a5cc5',
-  xml: leftIconSvg,
+  xml: rightIconSvg,
 })`
 `;
