@@ -14,6 +14,8 @@ export default () => {
   const currentForm = forms[currentStepIndex];
   const [userInfo, setUserInfo] = useState<any>({ gender: 'f' });
 
+  const isLastStep = currentStepIndex === forms.length - 1;
+
   const onPressNextStep = () => {
     if (currentStepIndex + 1 < forms.length) {
       setCurrentStepIndex(currentStepIndex + 1);
@@ -61,9 +63,9 @@ export default () => {
       })}
       <FormButton
         onPress={onPressNextStep}
-        style={{ marginTop: 24 }}
+        style={isLastStep ? { marginTop: 24 } : undefined}
       >
-        다음으로
+        {isLastStep ? '시작하기' : '다음으로'}
       </FormButton>
     </AuthContainer>
   );

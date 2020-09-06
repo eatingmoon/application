@@ -43,6 +43,7 @@ const Wrapper = styled.View`
 
 const Field = styled.Text`
   font-size: 17px;
+  font-weight: bold;
   line-height: ${17 * 1.18}px;
   color: #373d42;
 `;
