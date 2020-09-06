@@ -16,6 +16,7 @@ interface IAuthContainer extends IsAlignedRight {
   children?: React.ReactNode;
   image?: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
+  innerRef?: any;
 }
 
 export default ({
@@ -26,9 +27,10 @@ export default ({
   children,
   image,
   imageStyle,
+  innerRef,
 }: IAuthContainer) => {
   return (
-    <ScrollContainer>
+    <ScrollContainer ref={innerRef}>
       <AuthHeader>
         {header}
       </AuthHeader>

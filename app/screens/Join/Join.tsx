@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState, useRef } from 'react';
 
 import forms, { IFormItem } from './forms';
 import FormTextInput from './FormTextInput';
@@ -10,13 +10,21 @@ import { screenWidth } from '../../utils/screenSize';
 import FormSelect from './FormSelect';
 
 export default () => {
+  const navigation = useNavigation();
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
   const currentForm = forms[currentStepIndex];
   const [userInfo, setUserInfo] = useState<any>({ gender: 'f' });
 
+  const scrollContainerRef = useRef<any>(null);
+
   const isLastStep = currentStepIndex === forms.length - 1;
 
   const onPressNextStep = () => {
+    if (isLastStep) {
+      navigation.navigate('Home');
+      return;
+    }
+    scrollContainerRef?.current?.scrollTo({ x: 0, y: 0, animated: true });
     if (currentStepIndex + 1 < forms.length) {
       setCurrentStepIndex(currentStepIndex + 1);
     }
@@ -30,6 +38,7 @@ export default () => {
       image={currentForm.image}
       imageStyle={currentForm.imageStyle}
       isAlignedRight={currentForm.isAlignedRight}
+      innerRef={scrollContainerRef}
     >
       {(currentForm.forms as IFormItem[]).map((value: IFormItem) => {
         const { type, field, placeholder, key } = value;
