@@ -49,7 +49,7 @@ export default [
       bottom: 44,
     },
     forms: [
-      { type: 'text', field: '생년월일 8자리', placeholder: '8자리로 입력해 주세요. ex)19881213' },
+      { type: 'text', field: '생년월일 8자리', placeholder: '8자리로 입력해 주세요. ex)19881213', key: 'birth' },
       {
         type: 'select',
         field: '성별',
@@ -57,7 +57,11 @@ export default [
           { field: '여성', value: 'f' },
           { field: '남성', value: 'm' },
         ],
+        key: 'gender',
       },
+      { type: 'checkbox', field: '이용약관 동의', key: 'policy' },
+      { type: 'checkbox', field: '개인정보 취급방침 동의', key: 'privacy' },
+      { type: 'checkbox', field: '마케팅 정보 수신 동의', key: 'marketing' },
     ]
   }
 ]

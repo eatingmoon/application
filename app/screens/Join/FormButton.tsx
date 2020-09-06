@@ -14,13 +14,13 @@ export default ({
   style = {},
 }: IFormButton) => {
   return (
-    <ButtonWrapper>
+    <ButtonWrapper
+      style={style}
+    >
       <TouchableWrapper
         onPress={onPress}
       >
-        <ButtonContainer
-          style={style}
-        >
+        <ButtonContainer>
           <ButtonText>
             {children}
           </ButtonText>
