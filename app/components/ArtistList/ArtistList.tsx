@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import ArtistItem from './ArtistItem';
+import Divider from './Divider';
+
+import { screenWidth } from '../../utils/screenSize';
 
 export default () => {
   return (
@@ -9,9 +12,12 @@ export default () => {
       <ArtistItem />
       <ArtistItem />
       <ArtistItem />
+      <Divider />
     </Container>
   );
 };
 
 const Container = styled.View`
+  width: ${screenWidth * 0.9}px;
+  margin-bottom: 21.5px;
 `;

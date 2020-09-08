@@ -19,7 +19,7 @@ const Navigator: React.FC = () => (
     } as any}
   >
     <Stack.Navigator
-      initialRouteName="Join"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,
