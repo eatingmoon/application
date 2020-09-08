@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, ViewStyle, TextStyle } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 interface IPrimary {
@@ -15,12 +15,14 @@ interface IButton extends IPrimary, IBiggerText {
   children?: React.ReactNode;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 }
 
 export default ({
   children,
   onPress,
   style = {},
+  textStyle = {},
   isPrimary = false,
   isMediumText = false,
   isBiggerText = false,
@@ -37,6 +39,7 @@ export default ({
           isPrimary={isPrimary}
           isBiggerText={isBiggerText}
           isMediumText={isMediumText}
+          style={textStyle}
         >
           {children}
         </ButtonText>

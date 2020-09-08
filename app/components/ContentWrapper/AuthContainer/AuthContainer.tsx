@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleProp, ImageStyle, ImageSourcePropType } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
-import AuthHeader from './AuthHeader';
+import Header from '../../Header';
 import ScrollContainer from '../ScrollContainer';
 
 interface IsAlignedRight {
@@ -31,9 +31,9 @@ export default ({
 }: IAuthContainer) => {
   return (
     <ScrollContainer ref={innerRef}>
-      <AuthHeader>
+      <Header>
         {header}
-      </AuthHeader>
+      </Header>
       <Wrapper>
         <Container>
           <Title

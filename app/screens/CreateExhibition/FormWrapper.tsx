@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components/native';
 
 import FormButton from './FormButton';
+import Header from '../../components/Header';
 import ViewContainer from '../../components/ContentWrapper/ViewContainer';
 import { screenWidth } from '../../utils/screenSize';
 
@@ -17,18 +18,12 @@ interface IFormWrapper {
 export default ({ title, progress, children, onPressLeft, onPressRight, rightButton = '다음' }: IFormWrapper) => {
   return (
     <ViewContainer>
-      <Container>
-        <StatusContainer>
-          {[...Array(3)].map((_: undefined, statusIndex: number) => (
-            <StatusCircle
-              key={`status-${statusIndex}`}
-              isSelected={statusIndex === progress}
-            />
-          ))}
-        </StatusContainer>
-        <Title>{title}</Title>
-      </Container>
-      {children}
+      <Header>
+        {`${title} (${progress + 1}/3)`}
+      </Header>
+      <ContentWrapper>
+        {children}
+      </ContentWrapper>
       <ButtonList>
         <FormButton onPress={onPressLeft}>이전</FormButton>
         <FormButton
@@ -42,10 +37,8 @@ export default ({ title, progress, children, onPressLeft, onPressRight, rightBut
   );
 };
 
-const Container = styled.View`
-  width: ${screenWidth * 0.8}px;
-  padding: 32px 0;
-  padding-bottom: 18px;
+const ContentWrapper = styled.View`
+  margin-top: 16px;
 `;
 
 const StatusContainer = styled.View`

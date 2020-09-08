@@ -2,7 +2,7 @@ import React from 'react';
 import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
 
-import leftIconSvg from '../../../assets/left.svg';
+import leftIconSvg from '../assets/left.svg';
 
 interface IAuthHeader {
   children?: React.ReactNode;

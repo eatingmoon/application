@@ -88,7 +88,7 @@ const Modal: React.FC<IModal> = ({
 export default Modal;
 
 const ModalContainer = styled.View`
-  width: ${screenWidth * 0.82};
+  width: ${screenWidth * 0.82}px;
   border-radius: 35px;
   border: solid 1px #d1d1d1;
   background-color: #ffffff;
