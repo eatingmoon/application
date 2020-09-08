@@ -5,24 +5,21 @@ import { SvgXml } from 'react-native-svg';
 import { screenWidth } from '../../utils/screenSize';
 
 import logoImage from '../../assets/logo.png';
-import profileIconSvg from '../../assets/profile.svg';
+import menuIconSvg from '../../assets/menu.svg';
 import searchIconSvg from '../../assets/search.svg';
 
 export default () => {
   return (
     <Container>
+      <TouchableIconContainer>
+        <MenuIcon />
+      </TouchableIconContainer>
       <LogoImage
         source={logoImage}
       />
-      <IconList>
-        <TouchableIconContainer>
-          <SearchIcon />
-        </TouchableIconContainer>
-        <IconListGap />
-        <TouchableIconContainer>
-          <ProfileIcon />
-        </TouchableIconContainer>
-      </IconList>
+      <TouchableIconContainer>
+        <SearchIcon />
+      </TouchableIconContainer>
     </Container>
   );
 };
@@ -54,22 +51,17 @@ const TouchableIconContainer = styled.TouchableWithoutFeedback`
 `;
 
 const SearchIcon = styled(SvgXml).attrs({
-  width: 17.28,
-  height: 15.62,
+  width: 18,
+  height: 18,
   color: '#ac92ec',
   xml: searchIconSvg,
 })`
 `;
 
-const ProfileIcon = styled(SvgXml).attrs({
-  width: 29.3,
-  height: 29.3,
+const MenuIcon = styled(SvgXml).attrs({
+  width: 20,
+  height: 20,
   color: '#ac92ec',
-  xml: profileIconSvg,
+  xml: menuIconSvg,
 })`
-`;
-
-const IconListGap = styled.View`
-  width: 7.9px;
-  height: 7.9px;
 `;
