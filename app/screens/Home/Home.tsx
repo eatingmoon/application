@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 import Section from './Section';
 import CreateButton from './CreateButton';
 import ExhibitionList from '../../components/ExhibitionList';
+import ArtistList from '../../components/ArtistList';
 import Divider from '../../components/Divider';
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 
@@ -27,8 +28,12 @@ export default () => {
           <ExhibitionList />
         </Section>
         <Divider />
-        <Section title="요즘 뜨는 아티스트"></Section>
-        <Section title="이 아티스트는 어때요?"></Section>
+        <Section title="요즘 뜨는 아티스트">
+          <ArtistList />
+        </Section>
+        <Section title="이 아티스트는 어때요?">
+          <ArtistList />
+        </Section>
       </ScrollContainer>
       <CreateButton />
     </RelativeContainer>

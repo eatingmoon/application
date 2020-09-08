@@ -26,6 +26,7 @@ export default () => {
             width: 0,
             height: 3,
           },
+          elevation: 3,
         }}
         onPress={() => setIsCreateModalShown(true)}
       />
