@@ -1,9 +1,10 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components/native';
 
 import tabRoutes from './tabRoutes';
 import TabItem from './TabItem';
+import Modal from '../Modal';
 
 interface ITabBar extends BottomTabBarProps {}
 
@@ -11,34 +12,51 @@ const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
   const currentTabIndex = state?.index || 0;
   const currentTab = state?.routeNames[currentTabIndex];
 
+  const [isCreateModalShown, setIsCreateModalShown] = useState<boolean>(false);
+
   return (
-    <Container>
-      {tabRoutes.map((routeInformation, index) => {
-        const { route } = routeInformation;
-        const isSelected = currentTab === route;
+    <>
+      <Container>
+        {tabRoutes.map((routeInformation, index) => {
+          const { route } = routeInformation;
+          const isSelected = currentTab === route;
 
-        const onPress = useCallback(() => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route,
-            canPreventDefault: true,
-          });
+          const onPress = useCallback(() => {
+            if (route === 'Create') {
+              return setIsCreateModalShown(true);
+            }
 
-          if (!isSelected && !event.defaultPrevented) {
-            navigation.navigate(route);
-          }
-        }, [route, isSelected]);
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route,
+              canPreventDefault: true,
+            });
 
-        return (
-          <TabItem
-            key={`tabItem-${index}`}
-            onPress={onPress}
-            isSelected={isSelected}
-            {...routeInformation}
-          />
-        );
-      })}
-    </Container>
+            if (!isSelected && !event.defaultPrevented) {
+              navigation.navigate(route);
+            }
+          }, [route, isSelected]);
+
+          return (
+            <TabItem
+              key={`tabItem-${index}`}
+              onPress={onPress}
+              isSelected={isSelected}
+              {...routeInformation}
+            />
+          );
+        })}
+      </Container>
+      <Modal
+        isVisible={isCreateModalShown}
+        onPressConfirm={() => setIsCreateModalShown(false)}
+        title="제작하기"
+        description="무엇을 제작하실지 선택해 주세요."
+        leftButton="전시회"
+        onPressLeftButton={() => navigation.navigate('CreateExhibition')}
+        rightButton="작품"
+      />
+    </>
   );
 };
 

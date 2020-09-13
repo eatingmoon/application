@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import Header from './Header';
 import Carousel from './Carousel';
 import Section from './Section';
-import CreateButton from './CreateButton';
 import ExhibitionList from '../../components/ExhibitionList';
 import ArtistList from '../../components/ArtistList';
 import Divider from '../../components/Divider';
@@ -35,7 +34,6 @@ export default () => {
           <ArtistList />
         </Section>
       </ScrollContainer>
-      <CreateButton />
     </RelativeContainer>
   );
 };
