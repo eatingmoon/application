@@ -10,7 +10,6 @@ interface ITabItem {
 }
 
 const TabItem: React.FC<ITabItem> = ({ icon, isSelected = false, onPress }) => {
-  console.log(icon)
   return (
     <TouchableWrapper
       onPress={onPress}
