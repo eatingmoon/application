@@ -2,11 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
-import Landing from './screens/Landing';
-import Home from './screens/Home';
-import Join from './screens/Join';
-import CreateExhibition from './screens/CreateExhibition';
-import ViewExhibition from './screens/ViewExhibition';
+import TabNavigator from './TabNavigator';
+
+import Landing from '../screens/Landing';
+import Join from '../screens/Join';
+import CreateExhibition from '../screens/CreateExhibition';
+import ViewExhibition from '../screens/ViewExhibition';
 
 const Stack = createStackNavigator();
 
@@ -19,12 +20,16 @@ const Navigator: React.FC = () => (
     } as any}
   >
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Main"
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,
       }}
     >
+      <Stack.Screen
+        name="Main"
+        component={TabNavigator}
+      />
       <Stack.Screen
         name="Landing"
         component={Landing}
@@ -32,10 +37,6 @@ const Navigator: React.FC = () => (
       <Stack.Screen
         name="Join"
         component={Join}
-      />
-      <Stack.Screen
-        name="Home"
-        component={Home}
       />
       <Stack.Screen
         name="CreateExhibition"
