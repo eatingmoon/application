@@ -24,5 +24,6 @@ export default [
   {
     icon: menuIcon,
     route: 'Menu',
+    size: 24,
   },
 ];

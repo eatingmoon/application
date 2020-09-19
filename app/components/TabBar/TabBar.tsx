@@ -6,6 +6,8 @@ import tabRoutes from './tabRoutes';
 import TabItem from './TabItem';
 import Modal from '../Modal';
 
+import { screenWidth } from '../../utils/screenSize';
+
 interface ITabBar extends BottomTabBarProps {}
 
 const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
@@ -64,7 +66,10 @@ export default TabBar;
 
 const Container = styled.View`
   width: 100%;
+  padding: 0 6px;
   flex-direction: row;
-  padding-top: 15px;
-  padding-bottom: 12px;
+  padding-bottom: 20.6px;
+  margin: 0 auto;
+  background-color: white;
+  elevation: 8;
 `;
