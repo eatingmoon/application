@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import styled from 'styled-components/native';
 
@@ -7,6 +8,8 @@ import TextButton from './TextButton';
 import { screenWidth } from '../../utils/screenSize';
 
 export default () => {
+  const navigation = useNavigation();
+
   return (
     <RelativeContainer>
       <ContentWrapper>
@@ -29,10 +32,15 @@ export default () => {
             placeholder="비밀번호를 입력하세요."
           />
           <ButtonContainer>
-            <FormButton>로그인</FormButton>
+            <FormButton
+              onPress={() => navigation.navigate('Main', { screen: 'Home' })}
+            >
+              로그인
+            </FormButton>
             <FormButton
               isPrimary
               style={{ marginTop: 10 }}
+              onPress={() => navigation.navigate('Main', { screen: 'Home' })}
             >
               회원가입
             </FormButton>

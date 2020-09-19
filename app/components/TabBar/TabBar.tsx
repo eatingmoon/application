@@ -1,5 +1,6 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React, { useCallback, useState } from 'react';
+import { Alert } from 'react-native';
 import styled from 'styled-components/native';
 
 import tabRoutes from './tabRoutes';
@@ -35,7 +36,8 @@ const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
             });
 
             if (!isSelected && !event.defaultPrevented) {
-              navigation.navigate(route);
+              // navigation.navigate(route);
+              Alert.alert('준비중입니다.');
             }
           }, [route, isSelected]);
 
@@ -55,7 +57,7 @@ const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
         title="제작하기"
         description="무엇을 제작하실지 선택해 주세요."
         leftButton="전시회"
-        onPressLeftButton={() => navigation.navigate('CreateExhibition')}
+        // onPressLeftButton={() => navigation.navigate('CreateExhibition')}
         rightButton="작품"
       />
     </>
