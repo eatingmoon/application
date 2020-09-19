@@ -66,5 +66,5 @@ const Container = styled.View`
   width: 100%;
   flex-direction: row;
   padding-top: 15px;
-  padding-bottom: 8px;
+  padding-bottom: 12px;
 `;
