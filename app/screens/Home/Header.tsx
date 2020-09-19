@@ -5,21 +5,20 @@ import { SvgXml } from 'react-native-svg';
 import { screenWidth } from '../../utils/screenSize';
 
 import logoImage from '../../assets/logo.png';
-import menuIconSvg from '../../assets/menu.svg';
-import searchIconSvg from '../../assets/search.svg';
+import notificationIconSvg from '../../assets/notification.svg';
 
 export default () => {
   return (
     <Container>
-      <TouchableIconContainer>
-        <MenuIcon />
-      </TouchableIconContainer>
+      <Dummy />
       <LogoImage
         source={logoImage}
       />
-      <TouchableIconContainer>
-        <SearchIcon />
-      </TouchableIconContainer>
+      <TouchableWrapper>
+        <IconWrapper>
+          <NotificationIcon />
+        </IconWrapper>
+      </TouchableWrapper>
     </Container>
   );
 };
@@ -29,9 +28,14 @@ const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 32.5px 0;
+  padding: 29.3px 0;
   margin: 0 auto;
   width: ${screenWidth * 0.9}px;
+`;
+
+const Dummy = styled.View`
+  height: 45.11px;
+  width: 45.11px;
 `;
 
 const LogoImage = styled.Image`
@@ -39,29 +43,17 @@ const LogoImage = styled.Image`
   height: 44.9px;
 `;
 
-const IconList = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+const TouchableWrapper = styled.TouchableWithoutFeedback`
 `;
 
-const TouchableIconContainer = styled.TouchableWithoutFeedback`
-  width: 29.3px;
-  height: 29.3px;
+const IconWrapper = styled.View`
+  padding: 10px;
 `;
 
-const SearchIcon = styled(SvgXml).attrs({
-  width: 18,
-  height: 18,
+const NotificationIcon = styled(SvgXml).attrs({
+  width: 22.1,
+  height: 25.11,
   color: '#ac92ec',
-  xml: searchIconSvg,
-})`
-`;
-
-const MenuIcon = styled(SvgXml).attrs({
-  width: 20,
-  height: 20,
-  color: '#ac92ec',
-  xml: menuIconSvg,
+  xml: notificationIconSvg,
 })`
 `;
