@@ -1,31 +1,36 @@
 import React from 'react';
+import { ImageSourcePropType, StyleProp, ViewStyle } from 'react-native';
 import styled from 'styled-components/native';
 
-import heartIconSvg from '../../assets/notifications/heart.png';
-import subscribeIconSvg from '../../assets/notifications/subscribe.png';
-import reviewIconSvg from '../../assets/notifications/review.png';
+import heartIcon from '../../assets/notifications/heart.png';
+import subscribeIcon from '../../assets/notifications/subscribe.png';
+import reviewIcon from '../../assets/notifications/review.png';
+
+const notificationIcons: {
+  [key: string]: ImageSourcePropType;
+} = {
+  heart: heartIcon,
+  subscribe: subscribeIcon,
+  review: reviewIcon,
+};
 
 export interface INotificationItem {
   type: string;
   content: string;
+  style?: StyleProp<ViewStyle>;
 }
-
-const notificationIcons: {
-  [key: string]: string;
-} = {
-  heart: heartIconSvg,
-  subscribe: subscribeIconSvg,
-  review: reviewIconSvg,
-};
 
 const NotificationItem: React.FC<INotificationItem> = ({
   type,
   content,
+  style = {},
 }) => {
   const icon = notificationIcons[type];
 
   return (
-    <Container>
+    <Container
+      style={style}
+    >
       <Icon
         source={icon}
       />
@@ -40,6 +45,9 @@ export default NotificationItem;
 
 const Container = styled.View`
   flex-direction: row;
+  width: 85%;
+  flex: 1;
+  align-items: center;
 `;
 
 const Icon = styled.Image.attrs({
@@ -50,4 +58,5 @@ const Icon = styled.Image.attrs({
 `;
 
 const ContentText = styled.Text`
+  margin-left: 9.7px;
 `;
