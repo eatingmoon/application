@@ -5,6 +5,8 @@ import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Profile from '../screens/Profile';
 import Manage from '../screens/Manage';
+import Notification from '../screens/Notification';
+
 import TabBar from '../components/TabBar';
 
 const Tab = createBottomTabNavigator();
@@ -36,6 +38,10 @@ const MainNavigator = () => {
       <Tab.Screen
         name="Profile"
         component={Profile}
+      />
+      <Tab.Screen
+        name="Notification"
+        component={Notification}
       />
     </Tab.Navigator>
   );

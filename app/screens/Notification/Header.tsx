@@ -1,32 +1,28 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
+import styled from 'styled-components/native';
 
 import { screenWidth } from '../../utils/screenSize';
+import leftIconSvg from '../../assets/left.svg';
 
-import logoImage from '../../assets/logo.png';
-import notificationIconSvg from '../../assets/notification.svg';
-
-export default () => {
+const Header = () => {
   const navigation = useNavigation();
 
   return (
     <Container>
-      <Dummy />
-      <LogoImage
-        source={logoImage}
-      />
       <TouchableWrapper
-        onPress={() => navigation.navigate('Notification')}
+        onPress={() => navigation.goBack()}
       >
         <IconWrapper>
-          <NotificationIcon />
+          <LeftIcon />
         </IconWrapper>
       </TouchableWrapper>
     </Container>
   );
 };
+
+export default Header;
 
 const Container = styled.View`
   display: flex;
@@ -38,16 +34,6 @@ const Container = styled.View`
   width: ${screenWidth * 0.9}px;
 `;
 
-const Dummy = styled.View`
-  height: 45.11px;
-  width: 45.11px;
-`;
-
-const LogoImage = styled.Image`
-  width: 46px;
-  height: 44.9px;
-`;
-
 const TouchableWrapper = styled.TouchableWithoutFeedback`
 `;
 
@@ -55,10 +41,10 @@ const IconWrapper = styled.View`
   padding: 10px;
 `;
 
-const NotificationIcon = styled(SvgXml).attrs({
-  width: 22.1,
-  height: 25.11,
-  color: '#ac92ec',
-  xml: notificationIconSvg,
+const LeftIcon = styled(SvgXml).attrs({
+  width: 15,
+  height: 15,
+  color: '#7A5CC5',
+  xml: leftIconSvg,
 })`
 `;
