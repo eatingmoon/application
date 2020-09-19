@@ -41,6 +41,7 @@ const Container = styled.View`
 const Dummy = styled.View`
   height: 45.11px;
   width: 45.11px;
+  margin-right: ${screenWidth * 0.025}px;
 `;
 
 const LogoImage = styled.Image`
@@ -53,6 +54,7 @@ const TouchableWrapper = styled.TouchableWithoutFeedback`
 
 const IconWrapper = styled.View`
   padding: 10px;
+  margin-left: ${screenWidth * 0.025}px;
 `;
 
 const LeftIcon = styled(SvgXml).attrs({
