@@ -9,9 +9,12 @@ import { screenWidth } from '../../utils/screenSize';
 export default () => {
   return (
     <Container>
-      <ArtistItem />
-      <ArtistItem />
-      <ArtistItem />
+      {[1, 2, 3].map((index) => (
+        <ArtistItem
+          key={`artist-${index}`}
+          temporaryIndex={index}
+        />
+      ))}
       <Divider />
     </Container>
   );

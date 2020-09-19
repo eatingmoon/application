@@ -6,14 +6,15 @@ import Divider from './Divider';
 import Tag from '../Tag';
 import starIconSvg from '../../assets/star.svg';
 
-export default () => {
+export default ({ temporaryIndex = 0 }: { temporaryIndex: number }) => {
+  console.log(`https://picsum.photos/seed/${temporaryIndex}/100/100`)
   return (
     <Wrapper>
       <Divider />
       <Container>
         <Information>
           <ProfileImage
-            source={{ uri: 'https://picsum.photos/seed/nyom/100/100' }}
+            source={{ uri: `https://picsum.photos/seed/${temporaryIndex}/100/100` }}
           />
           <Section>
             <Name>권순재</Name>
@@ -48,7 +49,9 @@ const Information = styled.View`
   align-items: center;
 `;
 
-const ProfileImage = styled.Image`
+const ProfileImage = styled.Image.attrs({
+  resizeMode: 'cover',
+})`
   width: 54px;
   height: 54px;
   border-radius: 27px;
