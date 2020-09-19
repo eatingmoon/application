@@ -5,8 +5,8 @@ import { SvgXml } from 'react-native-svg';
 
 import { screenWidth } from '../utils/screenSize';
 
-import logoImage from '../../assets/logo.png';
-import leftIconSvg from '../../assets/left.svg';
+import logoImage from '../assets/logo.png';
+import leftIconSvg from '../assets/left.svg';
 
 export default () => {
   const navigation = useNavigation();

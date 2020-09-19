@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import ProfileHeader from '../../components/ProfileHeader';
+import Profile from './Profile';
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 
 const ProfileScreen = () => {
@@ -9,6 +10,7 @@ const ProfileScreen = () => {
     <RelativeContainer>
       <ScrollContainer>
         <ProfileHeader />
+        <Profile />
       </ScrollContainer>
     </RelativeContainer>
   );

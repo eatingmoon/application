@@ -28,7 +28,6 @@ const TabItem: React.FC<ITabItem> = ({ icon, size = 31, isSelected = false, onPr
           xml={icon}
           color={isSelected ? '#7A5CC5' : '#808080'}
         />
-        <Text>{JSON.stringify(isSelected ? '#7A5CC5' : '#808080')}</Text>
       </Container>
     </TouchableWrapper>
   );
