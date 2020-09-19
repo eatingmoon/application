@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import styled from 'styled-components/native';
 
-import { screenWidth } from '../../utils/screenSize';
-import MoreButton from '../../components/MoreButton';
+import { screenWidth } from '../utils/screenSize';
+import MoreButton from './MoreButton';
 
 interface ISection {
   children?: React.ReactNode;
@@ -16,7 +16,9 @@ export default ({
   title,
   style = {},
 }: ISection) => (
-  <Container>
+  <Container
+    style={style}
+  >
     <SectionHeader>
       <SectionTitle>
         {title}

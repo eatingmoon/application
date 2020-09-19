@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import Header from './Header';
 import Carousel from './Carousel';
-import Section from './Section';
+import Section from '../../components/Section';
 import ExhibitionList from '../../components/ExhibitionList';
 import ArtistList from '../../components/ArtistList';
 import Divider from '../../components/Divider';
