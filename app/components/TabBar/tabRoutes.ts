@@ -19,11 +19,11 @@ export default [
   },
   {
     icon: mypageIcon,
-    route: 'MyPage',
+    route: 'Manage',
   },
   {
     icon: menuIcon,
-    route: 'Menu',
+    route: 'Profile',
     size: 24,
   },
 ];
