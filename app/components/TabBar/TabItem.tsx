@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { SvgXml } from 'react-native-svg';
+import { SvgXml as Icon } from 'react-native-svg';
 
 import styled from 'styled-components/native';
 
@@ -60,7 +59,4 @@ const SelectedBar = styled.View`
   width: 30px;
   background-color: #7A5CC5;
   border-radius: 1px;
-`;
-
-const Icon = styled(SvgXml)`
 `;
