@@ -1,6 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
-const ManageScreen = () => null;
+import ProfileHeader from '../../components/ProfileHeader';
+import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
+
+const ManageScreen = () => {
+  return (
+    <RelativeContainer>
+      <ScrollContainer>
+        <ProfileHeader />
+      </ScrollContainer>
+    </RelativeContainer>
+  );
+};
 
 export default ManageScreen;
+
+const RelativeContainer = styled.View`
+  flex: 1;
+`;

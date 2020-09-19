@@ -1,6 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
-const SearchScreen = () => null;
+import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
+
+const SearchScreen = () => {
+  return (
+    <RelativeContainer>
+      <ScrollContainer>
+      </ScrollContainer>
+    </RelativeContainer>
+  );
+};
 
 export default SearchScreen;
+
+const RelativeContainer = styled.View`
+  flex: 1;
+`;
