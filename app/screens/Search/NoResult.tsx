@@ -18,13 +18,27 @@ const NoResult: React.FC = () => (
 export default NoResult;
 
 const Wrapper = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Container = styled.View`
+  margin-bottom: 14%;
 `;
 
 const Title = styled.Text`
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: ${30 * 1.2}px;
+  color: #000000;
+  margin-bottom: 5px;
 `;
 
 const Subtitle = styled.Text`
+  text-align: center;
+  font-size: 20px;
+  line-height: ${20 * 1.2}px;
+  color: #000000;
 `;
