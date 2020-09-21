@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import SearchItem from './SearchItem';
+import { screenWidth } from '../../../utils/screenSize';
 
 interface ISearchSection {
   title: string;
@@ -46,19 +47,42 @@ const exampleSearchItems = Array(3).fill({
 });
 
 const Wrapper = styled.View`
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(122, 92, 197, 0.43);
+  align-items: center;
 `;
 
 const Header = styled.View`
+  width: ${screenWidth * 0.9}px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 16.5px;
+  padding-bottom: 4.5px;
+  border-bottom-width: 0.5px;
+  border-bottom-color: rgba(122, 92, 197, 0.43);
 `;
 
 const HeaderTitle = styled.Text`
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: ${20 * 1.2}px;
+  color: #000000;
 `;
 
 const TouchableWrapper = styled.TouchableOpacity`
 `;
 
 const HeaderMoreButton = styled.Text`
+  align-self: flex-start;
+  font-size: 18px;
+  line-height: ${18 * 1.22}px;
+  color: #7a5cc5;
 `;
 
 const SearchItemList = styled.View`
+  padding-top: 13.4px;
+  padding-bottom: 13.6px;
 `;

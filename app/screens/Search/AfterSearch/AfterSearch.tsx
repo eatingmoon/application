@@ -21,4 +21,5 @@ const AfterSearch: React.FC<IAfterSearch> = () => {
 export default AfterSearch;
 
 const Container = styled.View`
+  width: 100%;
 `;
