@@ -33,7 +33,9 @@ const SearchHeader: React.FC<ISearchHeader> = ({ query, onChangeQuery }) => {
           value={query}
           onChangeText={onChangeQuery}
         />
-        <CancelIcon />
+        <CancelIconWrapper>
+          <CancelIcon />
+        </CancelIconWrapper>
       </SearchBarContainer>
     </Container>
   );
@@ -45,7 +47,8 @@ const Container = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 16.2px 0;
+  padding-top: 16.2px;
+  padding-bottom: 14.5px;
   margin: 0 auto;
   width: ${screenWidth * 0.9}px;
 `;
@@ -56,6 +59,7 @@ const TouchableWrapper = styled.TouchableWithoutFeedback`
 const IconWrapper = styled.View`
   padding: 10px;
   margin-left: ${screenWidth * 0.025}px;
+  margin-right: 7.1px;
 `;
 
 const LeftIcon = styled(SvgXml).attrs({
@@ -67,6 +71,17 @@ const LeftIcon = styled(SvgXml).attrs({
 `;
 
 const SearchBarContainer = styled.View`
+  flex-direction: row;
+  border-radius: 15px;
+  border: solid 1px #c5c5c5;
+  background-color: #fcfcfc;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  height: 46px;
+  padding-left: 11px;
+  padding-right: 14px;
+  elevation: 10;
 `;
 
 const SearchIcon = styled(SvgXml).attrs({
@@ -78,6 +93,14 @@ const SearchIcon = styled(SvgXml).attrs({
 `;
 
 const SearchBar = styled.TextInput`
+  margin-left: 8px;
+  font-size: 18px;
+  line-height: ${1.2 * 18}px;
+  color: #000000;
+`;
+
+const CancelIconWrapper = styled.View`
+  margin-left: auto;
 `;
 
 const CancelIcon = styled(SvgXml).attrs({

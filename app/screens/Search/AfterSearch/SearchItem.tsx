@@ -5,6 +5,7 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 import styled from 'styled-components/native';
+
 import { screenWidth } from '../../../utils/screenSize';
 
 interface ISearchItem {
@@ -21,9 +22,11 @@ const SearchItem: React.FC<ISearchItem> = ({ image, title, creatorName, date, st
       <Container
         style={style}
       >
-        <Image
-          source={image}
-        />
+        <ImageWrapper>
+          <Image
+            source={image}
+          />
+        </ImageWrapper>
         <Information>
           <Title>
             {title}
@@ -52,6 +55,12 @@ const Container = styled.View`
   width: ${screenWidth * 0.9}px;
   padding-top: 8.1px;
   padding-bottom: 7.9px;
+`;
+
+const ImageWrapper = styled.View`
+  elevation: 5;
+  background-color: white;
+  border-radius: 10px;
 `;
 
 const Image = styled.Image`
