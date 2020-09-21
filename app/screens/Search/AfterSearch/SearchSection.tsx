@@ -25,6 +25,10 @@ const SearchSection: React.FC<ISearchSection> = ({ title }) => {
           <SearchItem
             key={`search-item-${index}`}
             {...item}
+            style={(index !== exampleSearchItems.length - 1) && {
+              borderBottomWidth: 2,
+              borderBottomColor: 'rgba(122, 92, 197, 0.1)',
+            }}
           />
         ))}
       </SearchItemList>

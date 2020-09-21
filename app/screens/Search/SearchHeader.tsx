@@ -30,6 +30,8 @@ const SearchHeader: React.FC<ISearchHeader> = ({ query, onChangeQuery }) => {
         <SearchIcon />
         <SearchBar
           placeholder="검색어를 입력해 주세요."
+          value={query}
+          onChangeText={onChangeQuery}
         />
         <CancelIcon />
       </SearchBarContainer>
