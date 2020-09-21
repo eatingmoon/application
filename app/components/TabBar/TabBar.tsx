@@ -36,8 +36,7 @@ const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
             });
 
             if (!isSelected && !event.defaultPrevented) {
-              // navigation.navigate(route);
-              Alert.alert('준비중입니다.');
+              navigation.navigate(route);
             }
           }, [route, isSelected]);
 
@@ -57,7 +56,7 @@ const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
         title="제작하기"
         description="무엇을 제작하실지 선택해 주세요."
         leftButton="전시회"
-        // onPressLeftButton={() => navigation.navigate('CreateExhibition')}
+        onPressLeftButton={() => navigation.navigate('CreateExhibition')}
         rightButton="작품"
       />
     </>
