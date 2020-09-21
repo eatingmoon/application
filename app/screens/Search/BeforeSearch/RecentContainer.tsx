@@ -9,8 +9,12 @@ interface IRecentContainer {}
 
 const RecentContainer: React.FC<IRecentContainer> = () => {
   return (
-    <ContainerWrapper>
-      <ContainerTitle>
+    <ContainerWrapper
+      style={{ marginTop: 19.5 }}
+    >
+      <ContainerTitle
+        style={{ marginBottom: 15.9 }}
+      >
         최근 검색어
       </ContainerTitle>
       <RecentItemList>
@@ -19,6 +23,10 @@ const RecentContainer: React.FC<IRecentContainer> = () => {
             key={`recent-item-${index}`}
             query={item}
             onPressCancel={() => {}}
+            style={(index !== exampleRecentSearchItems.length - 1) && {
+              borderBottomWidth: 2,
+              borderBottomColor: 'rgba(122, 92, 197, 0.1)',
+            }}
           />
         ))}
       </RecentItemList>

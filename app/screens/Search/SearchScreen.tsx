@@ -3,13 +3,15 @@ import styled from 'styled-components/native';
 
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 import AfterSearch from './AfterSearch';
+import BeforeSearch from './BeforeSearch';
 import NoResult from './NoResult';
 import SearchHeader from './SearchHeader';
 
 const SearchScreen = () => {
   const [query, setQuery] = useState<string>('');
+  const [isSearching, setIsSearching] = useState<boolean>(true);
 
-  const isNoResult = true;
+  const isNoResult = false;
 
   if (isNoResult) {
     return (
@@ -30,7 +32,11 @@ const SearchScreen = () => {
           query={query}
           onChangeQuery={setQuery}
         />
-        <AfterSearch />
+        {isSearching ? (
+          <BeforeSearch />
+        ) : (
+          <AfterSearch />
+        )}
       </ScrollContainer>
     </RelativeContainer>
   );
