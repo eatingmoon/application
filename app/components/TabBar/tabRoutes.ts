@@ -8,6 +8,9 @@ export default [
   {
     icon: homeIcon,
     route: 'Home',
+    routeAlias: [
+      'Notification',
+    ],
   },
   {
     icon: searchIcon,

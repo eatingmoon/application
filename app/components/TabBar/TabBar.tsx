@@ -21,8 +21,9 @@ const TabBar: React.FC<ITabBar> = ({ state, navigation }) => {
     <>
       <Container>
         {tabRoutes.map((routeInformation, index) => {
-          const { route } = routeInformation;
-          const isSelected = currentTab === route;
+          const { route, routeAlias = [] } = routeInformation;
+          const isSelected = currentTab === route
+            || routeAlias.includes(currentTab);
 
           const onPress = useCallback(() => {
             if (route === 'Create') {
@@ -72,5 +73,5 @@ const Container = styled.View`
   padding-bottom: 20.6px;
   margin: 0 auto;
   background-color: white;
-  elevation: 8;
+  elevation: 10;
 `;
