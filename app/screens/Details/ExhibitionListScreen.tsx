@@ -5,7 +5,7 @@ import DetailHeader from './DetailHeader';
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 import ExhibitionCard from '../../components/ExhibitionCard';
 
-const exhibitionItems = Array(3).fill({
+const exhibitionItems = Array(4).fill({
   title: '꽃을 그리다',
   description: '몽글몽글한 색감들로\n당신의 꿈을 그립니다.',
   creatorName: '이민주',
