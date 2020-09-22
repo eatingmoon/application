@@ -6,19 +6,38 @@ import styled from 'styled-components/native';
 import { screenWidth } from '../../utils/screenSize';
 import leftIconSvg from '../../assets/left.svg';
 
-const Header: React.FC = ({ children }) => {
+interface IHeader {
+  title: string;
+  description?: string;
+}
+
+const Header: React.FC<IHeader> = ({ title, description }) => {
   const navigation = useNavigation();
 
   return (
-    <Container>
-      <IconWrapper>
+    <Container
+      style={{
+        paddingTop: description ? 30 : 25,
+        alignItems: description ? 'flex-start' : 'center',
+      }}
+    >
+      <IconWrapper
+        style={{
+          marginTop: description ? 3 : 0,
+        }}
+      >
         <TouchableWrapper
           onPress={() => navigation.goBack()}
         >
           <LeftIcon />
         </TouchableWrapper>
       </IconWrapper>
-      <Text>{children}</Text>
+      <HeaderTextWrapper>
+        <HeaderTitle>{title}</HeaderTitle>
+        {description && (
+          <HeaderDescription>{description}</HeaderDescription>
+        )}
+      </HeaderTextWrapper>
     </Container>
   );
 };
@@ -28,8 +47,6 @@ export default Header;
 const Container = styled.View`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  padding-top: 25px;
   padding-bottom: 39px;
   margin: 0 auto;
   width: ${screenWidth * 0.81}px;
@@ -50,9 +67,18 @@ const LeftIcon = styled(SvgXml).attrs({
 })`
 `;
 
-const Text = styled.Text`
+const HeaderTextWrapper = styled.View`
+`;
+
+const HeaderTitle = styled.Text`
   font-weight: 500;
   font-size: 20px;
   line-height: ${20 * 1.2}px;
   color: #000000;
+`;
+
+const HeaderDescription = styled.Text`
+  font-size: 13px;
+  line-height: ${13 * 1.23}px;
+  color: #929292;
 `;

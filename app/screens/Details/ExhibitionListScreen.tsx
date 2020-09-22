@@ -17,9 +17,10 @@ const ExhibitionList: React.FC = () => {
   return (
     <RelativeContainer>
       <ScrollContainer>
-        <DetailHeader>
-          최근에 본 전시회
-        </DetailHeader>
+        <DetailHeader
+          title="최근에 본 전시회"
+          description="회원님이 선택하신 태그를 바탕으로 수집된 결과입니다."
+        />
         {exhibitionItems.map((exhibition, index) => (
           <ExhibitionCard
             key={`exhibition-${index}`}

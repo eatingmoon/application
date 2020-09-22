@@ -26,9 +26,9 @@ const PieceList: React.FC = () => {
   return (
     <RelativeContainer>
       <ScrollContainer>
-        <DetailHeader>
-          내가 좋아하는 작품
-        </DetailHeader>
+        <DetailHeader
+          title="내가 좋아하는 작품"
+        />
         <PieceCardList>
           {pieceItems.map((Piece, index) => (
             <PieceCard
