@@ -8,6 +8,7 @@ import Manage from '../screens/Manage';
 import Notification from '../screens/Notification';
 
 import {
+  CreatorListScreen,
   ExhibitionListScreen,
   PieceListScreen,
 } from '../screens/Details';
@@ -55,6 +56,10 @@ const MainNavigator = () => {
       <Tab.Screen
         name="PieceList"
         component={PieceListScreen}
+      />
+      <Tab.Screen
+        name="CreatorList"
+        component={CreatorListScreen}
       />
     </Tab.Navigator>
   );

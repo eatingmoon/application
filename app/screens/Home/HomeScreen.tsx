@@ -36,7 +36,10 @@ export default () => {
           <ExhibitionList />
         </Section>
         <Divider />
-        <Section title="요즘 뜨는 아티스트">
+        <Section
+          title="요즘 뜨는 아티스트"
+          onPressMore={() => navigation.navigate('CreatorList')}
+        >
           <CreatorList />
         </Section>
         <Section title="이 아티스트는 어때요?">
