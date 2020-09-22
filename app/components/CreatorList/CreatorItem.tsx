@@ -6,11 +6,21 @@ import Divider from './Divider';
 import Tag from '../Tag';
 import starIconSvg from '../../assets/star.svg';
 
-export default ({ temporaryIndex = 0 }: { temporaryIndex: number }) => {
+interface ICreatorItem {
+  temporaryIndex: number;
+  isTopDividerRemoved?: boolean;
+}
+
+export default ({
+  temporaryIndex = 0,
+  isTopDividerRemoved = false,
+}: ICreatorItem) => {
   console.log(`https://picsum.photos/seed/${temporaryIndex}/100/100`)
   return (
     <Wrapper>
-      <Divider />
+      {!isTopDividerRemoved && (
+        <Divider />
+      )}
       <Container>
         <Information>
           <ProfileImage

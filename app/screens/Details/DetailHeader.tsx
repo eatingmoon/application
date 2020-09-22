@@ -9,16 +9,22 @@ import leftIconSvg from '../../assets/left.svg';
 interface IHeader {
   title: string;
   description?: string;
+  isBottomPaddingRemoved?: boolean;
 }
 
-const Header: React.FC<IHeader> = ({ title, description }) => {
+const Header: React.FC<IHeader> = ({
+  title,
+  description,
+  isBottomPaddingRemoved = false,
+}) => {
   const navigation = useNavigation();
 
   return (
     <Container
       style={{
-        paddingTop: description ? 30 : 25,
         alignItems: description ? 'flex-start' : 'center',
+        paddingTop: description ? 30 : 25,
+        paddingBottom: isBottomPaddingRemoved ? 0 : 39,
       }}
     >
       <IconWrapper
@@ -47,7 +53,6 @@ export default Header;
 const Container = styled.View`
   display: flex;
   flex-direction: row;
-  padding-bottom: 39px;
   margin: 0 auto;
   width: ${screenWidth * 0.81}px;
 `;
