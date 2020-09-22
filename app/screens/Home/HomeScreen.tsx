@@ -6,7 +6,7 @@ import Header from './Header';
 import Carousel from './Carousel';
 import Section from '../../components/Section';
 import ExhibitionList from '../../components/ExhibitionList';
-import ArtistList from '../../components/ArtistList';
+import CreatorList from '../../components/CreatorList';
 import Divider from '../../components/Divider';
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 
@@ -37,10 +37,10 @@ export default () => {
         </Section>
         <Divider />
         <Section title="요즘 뜨는 아티스트">
-          <ArtistList />
+          <CreatorList />
         </Section>
         <Section title="이 아티스트는 어때요?">
-          <ArtistList />
+          <CreatorList />
         </Section>
       </ScrollContainer>
     </RelativeContainer>

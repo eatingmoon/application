@@ -19,7 +19,7 @@ export default () => {
           <ProfileContainer>
             <ProfileImage source={placeholderDog} />
             <ProfileInformation>
-              <ArtistText>아티스트</ArtistText>
+              <CreatorText>아티스트</CreatorText>
               <ProfileName>권순재</ProfileName>
               <MetaText>최종 수정 2020.06.24</MetaText>
             </ProfileInformation>
@@ -80,7 +80,7 @@ const ProfileInformation = styled.View`
   margin-left: 14px;
 `;
 
-const ArtistText = styled.Text`
+const CreatorText = styled.Text`
   color: #7A5CC5;
   font-size: 23px;
   line-height: 33px;

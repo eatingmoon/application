@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import ArtistItem from './ArtistItem';
+import CreatorItem from './CreatorItem';
 import Divider from './Divider';
 
 import { screenWidth } from '../../utils/screenSize';
@@ -10,8 +10,8 @@ export default () => {
   return (
     <Container>
       {[1, 2, 3].map((index) => (
-        <ArtistItem
-          key={`artist-${index}`}
+        <CreatorItem
+          key={`creator-${index}`}
           temporaryIndex={index}
         />
       ))}
