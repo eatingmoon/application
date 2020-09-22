@@ -7,6 +7,10 @@ import Profile from '../screens/Profile';
 import Manage from '../screens/Manage';
 import Notification from '../screens/Notification';
 
+import {
+  ExhibitionListScreen,
+} from '../screens/Details';
+
 import TabBar from '../components/TabBar';
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +46,10 @@ const MainNavigator = () => {
       <Tab.Screen
         name="Notification"
         component={Notification}
+      />
+      <Tab.Screen
+        name="ExhibitionList"
+        component={ExhibitionListScreen}
       />
     </Tab.Navigator>
   );

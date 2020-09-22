@@ -9,12 +9,14 @@ interface ISection {
   children?: React.ReactNode;
   title?: string;
   style?: StyleProp<ViewStyle>;
+  onPressMore?: () => void;
 }
 
 export default ({
   children,
   title,
   style = {},
+  onPressMore,
 }: ISection) => (
   <Container
     style={style}
@@ -23,7 +25,9 @@ export default ({
       <SectionTitle>
         {title}
       </SectionTitle>
-      <MoreButton />
+      <MoreButton
+        onPress={onPressMore}
+      />
     </SectionHeader>
     {children}
   </Container>

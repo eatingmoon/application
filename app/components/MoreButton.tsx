@@ -4,11 +4,19 @@ import styled from 'styled-components/native';
 
 import rightIconSvg from '../assets/right.svg';
 
-export default () => (
+interface IMoreButton {
+  onPress?: () => void;
+}
+
+export default ({ onPress }: IMoreButton) => (
   <Container>
-    <MoreText>
-      더보기
-    </MoreText>
+    <TouchableWrapper
+      onPress={onPress}
+    >
+      <MoreText>
+        더보기
+      </MoreText>
+    </TouchableWrapper>
     <MoreIcon />
   </Container>
 );
@@ -16,6 +24,9 @@ export default () => (
 const Container = styled.View`
   flex-direction: row;
   align-items: center;
+`;
+
+const TouchableWrapper = styled.TouchableWithoutFeedback`
 `;
 
 const MoreText = styled.Text`

@@ -27,6 +27,9 @@ export default [
   {
     icon: menuIcon,
     route: 'Profile',
+    routeAlias: [
+      'ExhibitionList',
+    ],
     size: 24,
   },
 ];
