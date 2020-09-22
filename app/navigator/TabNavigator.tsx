@@ -9,6 +9,7 @@ import Notification from '../screens/Notification';
 
 import {
   ExhibitionListScreen,
+  PieceListScreen,
 } from '../screens/Details';
 
 import TabBar from '../components/TabBar';
@@ -50,6 +51,10 @@ const MainNavigator = () => {
       <Tab.Screen
         name="ExhibitionList"
         component={ExhibitionListScreen}
+      />
+      <Tab.Screen
+        name="PieceList"
+        component={PieceListScreen}
       />
     </Tab.Navigator>
   );

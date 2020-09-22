@@ -25,7 +25,10 @@ export default () => {
           <ExhibitionList />
         </Section>
         <Divider />
-        <Section title="이달의 인기 작품">
+        <Section
+          title="이달의 인기 작품"
+          onPressMore={() => navigation.navigate('PieceList')}
+        >
           <ExhibitionList />
         </Section>
         <Divider />
