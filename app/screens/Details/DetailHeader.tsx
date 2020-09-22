@@ -29,7 +29,7 @@ const Container = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 23px;
+  padding-top: 25px;
   padding-bottom: 39px;
   margin: 0 auto;
   width: ${screenWidth * 0.81}px;
