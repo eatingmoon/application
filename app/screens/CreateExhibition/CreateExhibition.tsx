@@ -17,7 +17,7 @@ export default () => {
 
   const steps = [
     { title: '기본 설정', component: <BasicSettings />, step: 1 },
-    { component: <ImageSelect /> },
+    { component: <ImageSelect />, bottomSpaceSize: 66 },
     { title: '작품 세부 설정', component: <PieceSettings />, step: 2 },
     { title: '미리보기', component: <Preview />, step: 3 },
   ];
@@ -54,6 +54,7 @@ export default () => {
     <FormWrapper
       title={currentStep.title}
       progress={currentStep.step}
+      bottomSpaceSize={currentStep.bottomSpaceSize}
       onPressLeft={onPressPreviousStep}
       onPressRight={onPressNextStep}
       rightButton={rightButtonText}

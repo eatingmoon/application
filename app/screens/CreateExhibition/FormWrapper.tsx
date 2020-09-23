@@ -10,13 +10,18 @@ import { screenWidth } from '../../utils/screenSize';
 interface IFormWrapper {
   title?: string;
   progress?: number;
+  bottomSpaceSize?: number;
   children?: React.ReactNode;
   onPressLeft?: () => void;
   onPressRight?: () => void;
   rightButton?: string;
 }
 
-export default ({ title, progress, children, onPressLeft, onPressRight, rightButton = '다음' }: IFormWrapper) => {
+export default ({
+  title, progress, bottomSpaceSize = 88,
+  children, onPressLeft, onPressRight,
+  rightButton = '다음'
+}: IFormWrapper) => {
   return (
     <ViewContainer>
       <BasicHeader
@@ -27,7 +32,9 @@ export default ({ title, progress, children, onPressLeft, onPressRight, rightBut
       </BasicHeader>
       <ScrollContainer>
         {children}
-        <BottomSpace />
+        <BottomSpace
+          style={{ height: bottomSpaceSize, width: bottomSpaceSize }}
+        />
       </ScrollContainer>
       <ButtonList>
         <FormButton onPress={onPressLeft}>이전</FormButton>
@@ -74,10 +81,7 @@ const Title = styled.Text`
   color: #000000;
 `;
 
-const BottomSpace = styled.View`
-  height: 88px;
-  width: 88px;
-`;
+const BottomSpace = styled.View``;
 
 const ButtonList = styled.View`
   position: absolute;

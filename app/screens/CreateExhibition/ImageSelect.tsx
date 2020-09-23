@@ -4,8 +4,9 @@ import PhotoSelector, { PhotoProps } from 'react-native-photo-selector';
 import styled from 'styled-components/native';
 
 import ImageSelectedMarker from './ImageSelectedMarker';
-import BasicHeaderBackButton from '../../components/BasicHeaderBackButton';
 import { screenWidth } from '../../utils/screenSize';
+
+const EmptyComponent: React.FC = () => null;
 
 interface IImageSelect {}
 
@@ -55,7 +56,20 @@ const ImageSelect: React.FC<IImageSelect> = () => {
         <PhotoSelector
           callback={onSelectPhoto}
           headerOption={{
-            hearderLeftComponent: <BasicHeaderBackButton />
+            headerContainerStyle: {
+              borderBottomWidth: 0,
+            },
+            headerLeftComponent: <EmptyComponent />,
+            headerRightComponent: <EmptyComponent />,
+          }}
+          zoomImageOption={{
+            isZoomEnabled: false,
+          }}
+          imageListOption={{
+            imageMargin: 2,
+            containerStyle: {
+              backgroundColor: 'black',
+            },
           }}
           selectedMarker={renderSelectedMarker}
         />
