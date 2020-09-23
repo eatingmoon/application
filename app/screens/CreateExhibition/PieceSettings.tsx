@@ -38,7 +38,9 @@ const TopList = styled.ScrollView.attrs({
   showsHorizontalScrollIndicator: false,
 })`
   width: ${screenWidth}px;
-  paddingLeft: ${screenWidth * 0.1}px;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 18px;
 `;
 
 const Wrapper = styled.View`
@@ -50,18 +52,20 @@ const Wrapper = styled.View`
 const PieceContainer = styled.View`
   background-color: #EEE9E6;
   position: relative;
-  height: 450px;
   width: ${screenWidth}px;
+  height: ${screenWidth}px;
   align-items: center;
   justify-content: center;
 `;
 
-const BottomButton = styled(Button)`
-  font-weight: bold;
-  font-size: 20px;
-  line-height: ${20 * 1.2}px;
-  color: #ffffff;
+const BottomButton = styled(Button).attrs({
+  textStyle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    lineHeight: 20 * 1.2,
+  },
+})`
   margin-top: 20px;
   padding: 16px 0;
-  width: ${screenWidth * 0.8}px;
+  width: ${screenWidth * 0.85}px;
 `;

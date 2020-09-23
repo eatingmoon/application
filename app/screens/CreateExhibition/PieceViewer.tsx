@@ -19,8 +19,8 @@ export default () => {
 const FrameContainer = styled.ImageBackground.attrs({
   resizeMode: 'cover',
 })`
-  width: 291.8px;
-  height: 389px;
+  width: ${291.8 * 0.95}px;
+  height: ${389 * 0.95}px;
   align-items: center;
   justify-content: center;
 `;
@@ -28,6 +28,6 @@ const FrameContainer = styled.ImageBackground.attrs({
 const PieceImage = styled.Image.attrs({
   resizeMode: 'cover',
 })`
-  width: 242px;
-  height: 327px;
+  width: ${241 * 0.95}px;
+  height: ${326 * 0.95}px;
 `;
