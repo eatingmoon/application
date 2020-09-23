@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 import FormWrapper from './FormWrapper';
 import BasicSettings from './BasicSettings';
+import ImageSelect from './ImageSelect';
 import PieceSettings from './PieceSettings';
 import Preview from './Preview';
 import Modal from '../../components/Modal';
@@ -15,9 +16,10 @@ export default () => {
   const [isFinishModalVisible, setIsFinishModalVisible] = useState<boolean>(false);
 
   const steps = [
-    { title: '기본 설정', component: <BasicSettings /> },
-    { title: '작품 세부 설정', component: <PieceSettings /> },
-    { title: '미리보기', component: <Preview /> },
+    { title: '기본 설정', component: <BasicSettings />, step: 1 },
+    { component: <ImageSelect /> },
+    { title: '작품 세부 설정', component: <PieceSettings />, step: 2 },
+    { title: '미리보기', component: <Preview />, step: 3 },
   ];
 
   const currentStep = steps[currentStepIndex];
@@ -51,7 +53,7 @@ export default () => {
   return (
     <FormWrapper
       title={currentStep.title}
-      progress={currentStepIndex}
+      progress={currentStep.step}
       onPressLeft={onPressPreviousStep}
       onPressRight={onPressNextStep}
       rightButton={rightButtonText}

@@ -22,7 +22,8 @@ export default ({ title, progress, children, onPressLeft, onPressRight, rightBut
       <BasicHeader
         onPressBack={onPressLeft}
       >
-        {`${title} (${progress + 1}/3)`}
+        {title}
+        {progress && ` (${progress}/3)`}
       </BasicHeader>
       <ScrollContainer>
         {children}
