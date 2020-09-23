@@ -19,7 +19,9 @@ interface IFormWrapper {
 export default ({ title, progress, children, onPressLeft, onPressRight, rightButton = '다음' }: IFormWrapper) => {
   return (
     <ViewContainer>
-      <BasicHeader>
+      <BasicHeader
+        onPressBack={onPressLeft}
+      >
         {`${title} (${progress + 1}/3)`}
       </BasicHeader>
       <ScrollContainer>
