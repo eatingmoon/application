@@ -36,7 +36,7 @@ const RecentContainer: React.FC<IRecentContainer> = () => {
 
 export default RecentContainer;
 
-const exampleRecentSearchItems = ['권순재', '김세령', '이승민', '이수호'];
+const exampleRecentSearchItems = ['김성우', '황복선', '김사능', '정황지'];
 
 const RecentItemList = styled.View`
 `;

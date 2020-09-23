@@ -20,7 +20,7 @@ export default () => {
             <ProfileImage source={placeholderDog} />
             <ProfileInformation>
               <CreatorText>아티스트</CreatorText>
-              <ProfileName>권순재</ProfileName>
+              <ProfileName>김성우</ProfileName>
               <MetaText>최종 수정 2020.06.24</MetaText>
             </ProfileInformation>
           </ProfileContainer>

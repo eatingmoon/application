@@ -27,7 +27,7 @@ export default ({
             source={{ uri: `https://picsum.photos/seed/${temporaryIndex}/100/100` }}
           />
           <Section>
-            <Name>권순재</Name>
+            <Name>김성우</Name>
             <TagList>
               <StyledTag>편안한</StyledTag>
               <StyledTag>수묵화</StyledTag>

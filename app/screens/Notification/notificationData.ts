@@ -42,7 +42,7 @@ export default [
       },
       {
         type: 'subscribe',
-        content: '회원님이 구독하신 전다예 님이 새로운 전시회를 업로드했습니다.',
+        content: '회원님이 구독하신 위성연 님이 새로운 전시회를 업로드했습니다.',
       },
       {
         type: 'review',
@@ -50,7 +50,7 @@ export default [
       },
       {
         type: 'subscribe',
-        content: '회원님이 구독하신 전다예 님이 새로운 작품을 업로드했습니다.',
+        content: '회원님이 구독하신 위성연 님이 새로운 작품을 업로드했습니다.',
       },
     ],
   },

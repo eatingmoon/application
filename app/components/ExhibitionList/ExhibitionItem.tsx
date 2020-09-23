@@ -25,7 +25,7 @@ export default () => {
         </ExhibitionTitle>
         <ExhibitionInformation>
           <CreatorName>
-            권순재
+            김성우
           </CreatorName>
           <RatingWrapper>
             <RatingIcon />

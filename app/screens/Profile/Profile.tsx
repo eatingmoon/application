@@ -3,14 +3,12 @@ import styled from 'styled-components/native';
 
 import { screenWidth } from '../../utils/screenSize';
 
-import placeholderNyom from '../../assets/profiles/nyom.png';
-
 const Profile = () => {
   return (
     <Container>
       <Information>
         <HelloText>
-          <NameText>김세령</NameText> 님,{'\n'}
+          <NameText>정황지</NameText> 님,{'\n'}
           안녕하세요!
         </HelloText>
         <ButtonWithTouchableOpacity>
@@ -20,7 +18,7 @@ const Profile = () => {
         </ButtonWithTouchableOpacity>
       </Information>
       <ProfileImage
-        source={placeholderNyom}
+        source={{ uri: 'https://images.unsplash.com/photo-1600722981906-107c99e13f54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80' }}
       />
     </Container>
   );

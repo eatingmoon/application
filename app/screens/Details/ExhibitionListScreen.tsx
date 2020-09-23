@@ -8,7 +8,7 @@ import ExhibitionCard from '../../components/ExhibitionCard';
 const exhibitionItems = Array(4).fill({
   title: '꽃을 그리다',
   description: '몽글몽글한 색감들로\n당신의 꿈을 그립니다.',
-  creatorName: '이민주',
+  creatorName: '김사능',
   date: '2020.07.01',
   image: { uri: 'https://images.unsplash.com/photo-1600683712885-55d9d9a5aa96?auto=format&fit=crop&w=1234&q=80' },
 });

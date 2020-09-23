@@ -42,7 +42,7 @@ export default SearchSection;
 const exampleSearchItems = Array(3).fill({
   image: { uri: 'https://images.unsplash.com/photo-1518526157563-b1ee37a05129?auto=format&fit=crop&w=2550&q=80' },
   title: '김밥 먹는 여우',
-  creatorName: '김세령',
+  creatorName: '정황지',
   date: '2020.08.25',
 });
 
