@@ -2,8 +2,9 @@ import React from 'react';
 import styled, { css } from 'styled-components/native';
 
 import FormButton from './FormButton';
-import Header from '../../components/Header';
+import BasicHeader from '../../components/BasicHeader';
 import ViewContainer from '../../components/ContentWrapper/ViewContainer';
+import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
 import { screenWidth } from '../../utils/screenSize';
 
 interface IFormWrapper {
@@ -18,12 +19,13 @@ interface IFormWrapper {
 export default ({ title, progress, children, onPressLeft, onPressRight, rightButton = '다음' }: IFormWrapper) => {
   return (
     <ViewContainer>
-      <Header>
+      <BasicHeader>
         {`${title} (${progress + 1}/3)`}
-      </Header>
-      <ContentWrapper>
+      </BasicHeader>
+      <ScrollContainer>
         {children}
-      </ContentWrapper>
+        <BottomSpace />
+      </ScrollContainer>
       <ButtonList>
         <FormButton onPress={onPressLeft}>이전</FormButton>
         <FormButton
@@ -67,6 +69,11 @@ const Title = styled.Text`
   font-size: 30px;
   line-height: ${30 * 1.2}px;
   color: #000000;
+`;
+
+const BottomSpace = styled.View`
+  height: 88px;
+  width: 88px;
 `;
 
 const ButtonList = styled.View`

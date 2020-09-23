@@ -21,6 +21,8 @@ export default ({ field }: IFormHashtagInput) => {
         <Hashtag isSelected>일러스트</Hashtag>
         <Hashtag>조각</Hashtag>
         <Hashtag>그림</Hashtag>
+        <Hashtag>만화</Hashtag>
+        <Hashtag>판화</Hashtag>
       </HashtagList>
     </Wrapper>
   );
@@ -42,4 +44,5 @@ const Field = styled.Text`
 const HashtagList = styled.View`
   width: ${screenWidth * 0.8}px;
   flex-direction: row;
+  flex-wrap: wrap;
 `;

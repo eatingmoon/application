@@ -36,7 +36,7 @@ const Wrapper = styled.View`
 `;
 
 const Field = styled.Text`
-  width: ${screenWidth * 0.8}px;
+  width: ${screenWidth * 0.84}px;
   margin-bottom: 5px;
   font-size: 18px;
   line-height: ${18 * 1.22}px;
@@ -51,6 +51,7 @@ const Input = styled.TextInput`
   font-size: 18px;
   line-height: ${18 * 1.22}px;
   color: #868e96;
-  padding: 16px 14px;
-  width: ${screenWidth * 0.8}px;
+  padding: 13px 14px;
+  width: ${screenWidth * 0.84}px;
+  elevation: 6;
 `;

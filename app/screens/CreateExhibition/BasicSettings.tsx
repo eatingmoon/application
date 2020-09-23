@@ -27,6 +27,7 @@ export default () => {
       <FormTextInput
         field="전시회 소개"
         placeholder="관람자에게 어떤 전시회인지 소개해 주세요!"
+        textAlignVertical="top"
         multiline
         style={{ height: 131 }}
       />
@@ -43,12 +44,14 @@ const Container = styled.View`
 `;
 
 const CoverImageBackground = styled.View`
-  margin-bottom: 25px;
-  width: ${screenWidth * 0.8}px;
-  height: 215px;
+  margin-top: 16px;
+  margin-bottom: 35px;
+  width: ${screenWidth * 0.84}px;
+  height: ${screenWidth * 0.53}px;
   background: #7a5cc5;
   border-radius: 12px;
   position: relative;
+  elevation: 6;
 `;
 
 const CoverImageTextWrapper = styled.View`

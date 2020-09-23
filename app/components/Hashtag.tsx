@@ -26,6 +26,7 @@ const Container = styled.View<ISelected>`
   border: solid 1px #d4d4d4;
   background-color: #ffffff;
   padding: 15px 19px;
+  elevation: 6;
 
   ${({ isSelected }) => isSelected && css`
     background-color: #7a5cc5;
