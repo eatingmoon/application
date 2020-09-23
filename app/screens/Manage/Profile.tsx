@@ -89,4 +89,5 @@ const ProfileImage = styled.Image.attrs({
 })`
   width: 136px;
   height: 136px;
+  border-radius: ${136 / 2}px;
 `;

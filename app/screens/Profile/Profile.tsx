@@ -72,4 +72,5 @@ const ProfileImage = styled.Image.attrs({
   height: 136px;
   margin-bottom: 8px;
   margin-right: ${screenWidth * 0.025}px;
+  border-radius: ${136 / 2}px;
 `;
