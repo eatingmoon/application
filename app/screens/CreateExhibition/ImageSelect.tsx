@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { PermissionsAndroid } from 'react-native';
-import RNFS from 'react-native-fs';
 import PhotoSelector, { PhotoProps } from 'react-native-photo-selector';
 import styled from 'styled-components/native';
+
+import ImageSelectedMarker from './ImageSelectedMarker';
+import BasicHeaderBackButton from '../../components/BasicHeaderBackButton';
+import { screenWidth } from '../../utils/screenSize';
 
 interface IImageSelect {}
 
@@ -40,14 +43,21 @@ const ImageSelect: React.FC<IImageSelect> = () => {
     setImage({ uri })
   };
 
+  const renderSelectedMarker = (selectedNumber: number) => (
+    <ImageSelectedMarker>
+      {selectedNumber}
+    </ImageSelectedMarker>
+  );
+
   return (
     <Container>
-      <Image
-        source={image}
-      />
       {!!photoSelectorReady && (
         <PhotoSelector
           callback={onSelectPhoto}
+          headerOption={{
+            hearderLeftComponent: <BasicHeaderBackButton />
+          }}
+          selectedMarker={renderSelectedMarker}
         />
       )}
     </Container>
@@ -57,11 +67,6 @@ const ImageSelect: React.FC<IImageSelect> = () => {
 export default ImageSelect;
 
 const Container = styled.View`
-  width: 100%;
-  align-items: center;
-`;
-
-const Image = styled.Image`
-  width: 128px;
-  height: 128px;
+  width: ${screenWidth}px;
+  flex: 1;
 `;

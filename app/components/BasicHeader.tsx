@@ -1,10 +1,8 @@
 import React from 'react';
-import { SvgXml } from 'react-native-svg';
 import styled from 'styled-components/native';
 
+import BasicHeaderBackButton from './BasicHeaderBackButton';
 import { screenWidth } from '../utils/screenSize';
-
-import leftIconSvg from '../assets/left.svg';
 
 interface IBasicHeader {
   children?: React.ReactNode;
@@ -15,15 +13,9 @@ export default ({ children, onPressBack }: IBasicHeader) => {
   return (
     <Wrapper>
       <Container>
-        <IconWrapper>
-          <TouchableWrapper
-            onPress={onPressBack}
-          >
-            <IconContainer>
-              <BackIcon />
-            </IconContainer>
-          </TouchableWrapper>
-        </IconWrapper>
+        <BasicHeaderBackButton
+          onPress={onPressBack}
+        />
         <Title>
           {children}
         </Title>
@@ -54,26 +46,6 @@ const Title = styled.Text`
   font-size: 18px;
   color: #7a5cc5;
 `;
-
-const IconWrapper = styled.View`
-  margin-left: 5px;
-`;
-
-const TouchableWrapper = styled.TouchableWithoutFeedback`
-`;
-
-const IconContainer = styled.View`
-  padding: 7px;
-`;
-
-const BackIcon = styled(SvgXml).attrs({
-  width: 10.1,
-  height: 19.8,
-  color: '#7a5cc5',
-  xml: leftIconSvg,
-})`
-`;
-
 
 const Dummy = styled.View`
   width: 10.1px;
