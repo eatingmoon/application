@@ -16,6 +16,8 @@ const ReviewExhibition: React.FC = () => {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const onPressSubmit = () => setIsReviewModalOpen(!isReviewModalOpen);
 
+  const [rating, setRating] = useState(4.5);
+
   return (
     <RelativeContainer>
       <ScrollContainer>
@@ -45,7 +47,10 @@ const ReviewExhibition: React.FC = () => {
         <ReviewContainer>
           <ReviewHeader>
             <ReviewTitle>리뷰 남기기</ReviewTitle>
-            <ReviewSelector />
+            <ReviewSelector
+              value={rating}
+              setValue={setRating}
+            />
           </ReviewHeader>
           <ReviewTextbox
             placeholder="전시회를 평가해 주세요."
@@ -148,7 +153,8 @@ const ReviewContainer = styled.View`
 const ReviewHeader = styled.View`
   width: ${screenWidth * 0.9}px;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: space-between;
   margin-bottom: 13.7px;
 `;
 
