@@ -1,53 +1,73 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import styled from 'styled-components/native';
+import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import styled from "styled-components/native";
 
-import FormTextInput from './FormTextInput';
-import FormButton from './FormButton';
-import TextButton from './TextButton';
-import { screenWidth } from '../../utils/screenSize';
+import FormTextInput from "./FormTextInput";
+import FormButton from "./FormButton";
+import TextButton from "./TextButton";
+import { screenWidth } from "../../utils/screenSize";
+import api from "../../utils/api";
+import { AsyncStorage } from "react-native";
 
 export default () => {
   const navigation = useNavigation();
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handlePress = async () => {
+    try {
+      console.log(id, password);
+      const {
+        data: { accessToken },
+      } = await api.post("/auth/login", {
+        username: id,
+        password,
+      });
+      await AsyncStorage.setItem("accessToken", accessToken);
+      api.defaults.headers.common["Authorization"] = accessToken;
+      navigation.navigate("Main", { screen: "Home" });
+    } catch ({
+      response: {
+        data: { message },
+      },
+    }) {
+      alert(message);
+    }
+  };
 
   return (
     <RelativeContainer>
       <ContentWrapper>
-        <LogoImage
-          source={require('../../assets/logo-white.png')}
-        />
+        <LogoImage source={require("../../assets/logo-white.png")} />
         <HeaderTitle>
-          당신의 작품을,{'\n'}
-          <HeaderBiggerTitle>
-            널리
-          </HeaderBiggerTitle>
+          당신의 작품을,{"\n"}
+          <HeaderBiggerTitle>널리</HeaderBiggerTitle>
         </HeaderTitle>
         <FormContainer>
           <FormTextInput
             field="아이디"
             placeholder="아이디를 입력하세요."
+            value={id}
+            onChangeText={(value) => setId(value)}
           />
           <FormTextInput
             field="비밀번호"
             placeholder="비밀번호를 입력하세요."
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(value) => setPassword(value)}
           />
           <ButtonContainer>
-            <FormButton
-              onPress={() => navigation.navigate('Main', { screen: 'Home' })}
-            >
-              로그인
-            </FormButton>
+            <FormButton onPress={handlePress}>로그인</FormButton>
             <FormButton
               isPrimary
               style={{ marginTop: 10 }}
-              onPress={() => navigation.navigate('Main', { screen: 'Home' })}
+              onPress={() => navigation.navigate("Main", { screen: "Home" })}
             >
               회원가입
             </FormButton>
           </ButtonContainer>
-          <TextButton
-            style={{ marginTop: 18 }}
-          >
+          <TextButton style={{ marginTop: 18 }}>
             비밀번호를 잊으셨나요?
           </TextButton>
         </FormContainer>
@@ -58,8 +78,8 @@ export default () => {
 
 const RelativeContainer = styled.ScrollView.attrs({
   contentContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 })`
   flex: 1;
@@ -74,7 +94,7 @@ const ContentWrapper = styled.View`
 `;
 
 const LogoImage = styled.Image.attrs({
-  resizeMode: 'contain',
+  resizeMode: "contain",
 })`
   width: ${screenWidth * 0.46 + 40}px;
   height: ${screenWidth * 0.45 + 40}px;
@@ -95,8 +115,7 @@ const HeaderBiggerTitle = styled.Text`
   line-height: ${42 * 1.54}px;
 `;
 
-const FormContainer = styled.View`
-`;
+const FormContainer = styled.View``;
 
 const ButtonContainer = styled.View`
   margin-top: 14px;
