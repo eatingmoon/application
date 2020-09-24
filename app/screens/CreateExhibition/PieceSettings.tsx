@@ -1,4 +1,5 @@
 import React from 'react';
+import ImagePicker from 'react-native-image-picker';
 import styled from 'styled-components/native';
 
 import PieceItem from './PieceItem';
@@ -8,10 +9,36 @@ import Button from '../../components/Button';
 import { screenWidth } from '../../utils/screenSize';
 
 export default () => {
+  const onClickCreatePiece = () => {
+    ImagePicker.showImagePicker({
+      title: 'Select Avatar',
+      customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    }, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = { uri: response.uri };
+        console.log(source);
+      }
+    });
+  };
+
   return (
     <Container>
       <TopList>
-        <CreatePieceButton />
+        <CreatePieceButton
+          onPress={onClickCreatePiece}
+        />
         <PieceItem index={1} />
         <PieceItem index={2} />
       </TopList>
