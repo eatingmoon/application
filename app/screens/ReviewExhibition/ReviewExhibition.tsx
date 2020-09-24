@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 
 import ScrollContainer from '../../components/ContentWrapper/ScrollContainer';
@@ -6,12 +6,16 @@ import Button from '../../components/Button';
 import Tag from '../../components/Tag';
 import ShareSection from './ShareSection';
 import ReviewSelector from './ReviewSelector';
+import ReviewModal from './ReviewModal';
 import Header from '../ViewExhibition/Header';
 import { TextInput } from '../CreateExhibition/FormTextInput';
 
 import { screenWidth } from "../../utils/screenSize";
 
 const ReviewExhibition: React.FC = () => {
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const onPressSubmit = () => setIsReviewModalOpen(!isReviewModalOpen);
+
   return (
     <RelativeContainer>
       <ScrollContainer>
@@ -50,11 +54,16 @@ const ReviewExhibition: React.FC = () => {
           />
           <ReviewSubmitButton
             isPrimary
+            onPress={onPressSubmit}
           >
             등록
           </ReviewSubmitButton>
         </ReviewContainer>
         <ShareSection />
+        <ReviewModal
+          isVisible={isReviewModalOpen}
+          setIsVisible={setIsReviewModalOpen}
+        />
       </ScrollContainer>
     </RelativeContainer>
   );

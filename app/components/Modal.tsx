@@ -5,10 +5,12 @@ import styled from 'styled-components/native';
 import ModalButton from './ModalButton';
 
 import { screenWidth } from '../utils/screenSize';
+import { StyleProp, ViewStyle } from 'react-native';
 
 interface IModal {
   isVisible: boolean;
-  title: string;
+  title?: string;
+  subtitle?: string;
   description?: string;
   onPressConfirm?: () => void;
   isConfirmedWhenBackdropPressed?: boolean;
@@ -21,11 +23,13 @@ interface IModal {
   centerButton?: React.ReactNode;
   isCenterButtonPrimary?: boolean;
   onPressCenterButton?: () => void;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Modal: React.FC<IModal> = ({
   isVisible,
   title,
+  subtitle,
   description,
   onPressConfirm,
   isConfirmedWhenBackdropPressed = true,
@@ -38,6 +42,7 @@ const Modal: React.FC<IModal> = ({
   centerButton = '',
   isCenterButtonPrimary = false,
   onPressCenterButton,
+  style = {},
 }) => {
   const onBackdropPress = isConfirmedWhenBackdropPressed
     ? onPressConfirm : undefined;
@@ -71,10 +76,19 @@ const Modal: React.FC<IModal> = ({
       onBackdropPress={onBackdropPress}
       backdropColor="rgba(0, 0, 0, 0.4)"
     >
-      <ModalContainer>
-        <Title>
-          {title}
-        </Title>
+      <ModalContainer
+        style={style}
+      >
+        {title && (
+          <Title>
+            {title}
+          </Title>
+        )}
+        {subtitle && (
+          <Subtitle>
+            {subtitle}
+          </Subtitle>
+        )}
         {description && (
           <Description>
             {description}
@@ -127,6 +141,15 @@ const Title = styled.Text`
   line-height: ${24 * 1.21}px;
   color: #353535;
   margin-bottom: 25px;
+`;
+
+const Subtitle = styled.Text`
+  color: rgba(0, 0, 0, 0.73);
+  font-weight: bold;
+  font-size: 20px;
+  line-height: ${20 * 1.2}px;
+  margin-bottom: 34px;
+  text-align: center;
 `;
 
 const Description = styled.Text`
