@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ImagePicker from 'react-native-image-picker';
 import styled from 'styled-components/native';
 
@@ -10,6 +10,8 @@ import { screenWidth } from '../../utils/screenSize';
 
 export default ({ imageURLs }: { imageURLs: string[] }) => {
   const [selectedImage, setSelectedImage] = useState('');
+
+  useEffect(() => setSelectedImage(imageURLs[0]), []);
 
   const onClickCreatePiece = () => {
     ImagePicker.showImagePicker({
@@ -92,7 +94,8 @@ const Wrapper = styled.View`
 `;
 
 const PieceContainer = styled.View`
-  background-color: #EEE9E6;
+  /* background-color: #EEE9E6; */
+  background-color: white;
   position: relative;
   width: ${screenWidth}px;
   height: ${screenWidth}px;

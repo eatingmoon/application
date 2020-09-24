@@ -4,7 +4,16 @@ import styled from 'styled-components/native';
 import placeholderFrame from '../../assets/placeholder-frame.png';
 import placeholderFox from '../../assets/placeholder-fox.png';
 
-export default ({ image }: { image: string }) => {
+export default ({ image, frame }: { image: string, frame?: string }) => {
+  if (!frame) {
+    return (
+      <ImageContainer>
+        <PieceImage
+          source={{ uri: image }}
+        />
+      </ImageContainer>
+    );
+  }
   return (
     <FrameContainer
       source={placeholderFrame}
@@ -15,6 +24,13 @@ export default ({ image }: { image: string }) => {
     </FrameContainer>
   );
 };
+
+const ImageContainer = styled.View`
+  width: ${291.8 * 0.95}px;
+  height: ${389 * 0.95}px;
+  align-items: center;
+  justify-content: center;
+`;
 
 const FrameContainer = styled.ImageBackground.attrs({
   resizeMode: 'cover',
