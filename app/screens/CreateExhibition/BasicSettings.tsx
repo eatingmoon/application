@@ -19,8 +19,10 @@ interface IBasicSettings {
 export default ({ coverImage, setCoverImage }: IBasicSettings) => {
   const onClickUpload = () => {
     ImagePicker.showImagePicker({
-      title: 'Select Avatar',
-      customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+      title: '커버 사진 업로드',
+      cancelButtonTitle: '취소',
+      takePhotoButtonTitle: '사진 촬영하기',
+      chooseFromLibraryButtonTitle: '앨범에서 가져오기',
       storageOptions: {
         skipBackup: true,
         path: 'images',
@@ -32,8 +34,6 @@ export default ({ coverImage, setCoverImage }: IBasicSettings) => {
         console.log('User cancelled image picker');
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
       } else {
         if (response.uri)
           setCoverImage({ uri: response.uri });

@@ -24,7 +24,7 @@ const Container = styled.View`
   border: 1px solid #999;
   justify-content: center;
   align-items: center;
-  border-radius: 10;
+  border-radius: 10px;
 `;
 
 const PlusIcon = styled(SvgXml).attrs({

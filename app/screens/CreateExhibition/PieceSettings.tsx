@@ -11,8 +11,10 @@ import { screenWidth } from '../../utils/screenSize';
 export default () => {
   const onClickCreatePiece = () => {
     ImagePicker.showImagePicker({
-      title: 'Select Avatar',
-      customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+      title: '작품 업로드',
+      cancelButtonTitle: '취소',
+      takePhotoButtonTitle: '사진 촬영하기',
+      chooseFromLibraryButtonTitle: '앨범에서 가져오기',
       storageOptions: {
         skipBackup: true,
         path: 'images',
@@ -24,8 +26,6 @@ export default () => {
         console.log('User cancelled image picker');
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
       } else {
         const source = { uri: response.uri };
         console.log(source);
