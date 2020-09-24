@@ -20,7 +20,7 @@ const Navigator: React.FC = () => (
     } as any}
   >
     <Stack.Navigator
-      initialRouteName="Landing"
+      initialRouteName="Main"
       screenOptions={{
         headerShown: false,
         gestureEnabled: false,

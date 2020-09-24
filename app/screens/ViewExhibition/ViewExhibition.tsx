@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import styled from 'styled-components/native';
 
@@ -9,6 +10,8 @@ import placeholderDog from '../../assets/profiles/dog.png';
 import placeholderFox from '../../assets/placeholder-fox-background.png';
 
 export default () => {
+  const navigation = useNavigation();
+
   return (
     <ViewContainer>
       <Header />
@@ -26,7 +29,11 @@ export default () => {
           </ProfileContainer>
         </OverlayWrapper>
       </ContentWrapper>
-      <BottomButton isPrimary isBiggerText>
+      <BottomButton
+        isPrimary
+        isBiggerText
+        onPress={() => navigation.navigate('ReviewExhibition')}
+      >
         전시회 입장하기
       </BottomButton>
     </ViewContainer>

@@ -49,7 +49,6 @@ export default ({
 };
 
 const TouchableWrapper = styled.TouchableWithoutFeedback`
-  width: 100%;
 `;
 
 const ButtonContainer = styled.View<IPrimary>`

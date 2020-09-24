@@ -6,6 +6,7 @@ import Search from '../screens/Search';
 import Profile from '../screens/Profile';
 import Manage from '../screens/Manage';
 import Notification from '../screens/Notification';
+import ReviewExhibition from '../screens/ReviewExhibition';
 
 import {
   CreatorListScreen,
@@ -20,7 +21,7 @@ const Tab = createBottomTabNavigator();
 const MainNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="ReviewExhibition"
       tabBar={({ state, descriptors, navigation }) => (
         <TabBar
           state={state}
@@ -60,6 +61,10 @@ const MainNavigator = () => {
       <Tab.Screen
         name="CreatorList"
         component={CreatorListScreen}
+      />
+      <Tab.Screen
+        name="ReviewExhibition"
+        component={ReviewExhibition}
       />
     </Tab.Navigator>
   );

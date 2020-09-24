@@ -15,6 +15,9 @@ export default [
   {
     icon: searchIcon,
     route: 'Search',
+    routeAlias: [
+      'ReviewExhibition',
+    ],
   },
   {
     icon: createIcon,
