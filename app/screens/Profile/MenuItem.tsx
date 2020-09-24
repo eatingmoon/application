@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { SvgXml as Icon } from 'react-native-svg';
@@ -8,15 +9,18 @@ import { screenWidth } from '../../utils/screenSize';
 interface IMenuItem {
   icon: string;
   name: string;
+  route?: string;
   isLastItem?: boolean;
 }
 
-const MenuItem: React.FC<IMenuItem> = ({ icon, name, isLastItem = false }) => {
+const MenuItem: React.FC<IMenuItem> = ({ icon, name, route, isLastItem = false }) => {
+  const navigation = useNavigation();
+
   return (
     <Wrapper>
       <Divider />
       <TouchableOpacity
-        onPress={() => console.log(true)}
+        onPress={route ? () => navigation.navigate(route) : undefined}
       >
         <Container>
           <Icon

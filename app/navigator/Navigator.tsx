@@ -9,6 +9,11 @@ import Join from '../screens/Join';
 import CreateExhibition from '../screens/CreateExhibition';
 import ViewExhibition from '../screens/ViewExhibition';
 
+import {
+  DocumentScreen,
+  SettingsScreen,
+} from '../screens/Settings';
+
 const Stack = createStackNavigator();
 
 const Navigator: React.FC = () => (
@@ -45,6 +50,14 @@ const Navigator: React.FC = () => (
       <Stack.Screen
         name="ViewExhibition"
         component={ViewExhibition}
+      />
+      <Stack.Screen
+        name="Document"
+        component={DocumentScreen}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
       />
     </Stack.Navigator>
   </NavigationContainer>
