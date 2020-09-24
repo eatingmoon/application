@@ -14,9 +14,16 @@ import uploadImageToS3 from '../../utils/uploadImageToS3';
 
 export default () => {
   const navigation = useNavigation();
+  const [form, setForm] = useState<any>({
+    background: {},
+    title: '',
+    description: '',
+    hashtag: [],
+  });
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
   const [rightButtonText, setRightButtonText] = useState<string>('다음');
   const [isFinishModalVisible, setIsFinishModalVisible] = useState<boolean>(false);
+  const [imageURLs, setImageURLs] = useState<string[]>([]);
 
   const [coverImage, setCoverImage] = useState<ImageSourcePropType | undefined>();
 
@@ -27,18 +34,38 @@ export default () => {
         <BasicSettings
           coverImage={coverImage}
           setCoverImage={setCoverImage}
+          title={form.title}
+          setTitle={(title: string) => setForm({ ...form, title })}
+          description={form.description}
+          setDescription={(description: string) => setForm({ ...form, description })}
+          hashtags={form.hashtag}
+          setHashtags={(hashtag: string[]) => setForm({ ...form, hashtag })}
         />
       ),
       step: 1,
       callback: async () => {
-        console.log('S3')
         if (coverImage) {
-          await uploadImageToS3(coverImage?.uri || '')
+          const res = await uploadImageToS3(coverImage?.uri || '');
+          if (res) {
+            const { postResponse: { location } } = res;
+            setForm({
+              ...form,
+              background: {
+                type: 'default',
+                path: location,
+              },
+            });
+          }
         }
       },
     },
-    { title: '이미지 선택', component: <ImageSelect />, bottomSpaceSize: 66, ignoredWhenBack: true },
-    { title: '작품 세부 설정', component: <PieceSettings />, step: 2 },
+    {
+      title: '이미지 선택',
+      component: <ImageSelect setImageURLs={setImageURLs} />,
+      bottomSpaceSize: 66,
+      ignoredWhenBack: true,
+    },
+    { title: '작품 세부 설정', component: <PieceSettings imageURLs={imageURLs} />, step: 2 },
     { title: '미리보기', component: <Preview />, step: 3 },
   ];
 

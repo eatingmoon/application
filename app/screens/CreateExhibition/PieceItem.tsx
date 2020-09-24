@@ -1,25 +1,34 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
-import placeholderFox from '../../assets/placeholder-fox.png';
+// import placeholderFox from '../../assets/placeholder-fox.png';
 
-export default ({ index }: {index: number}) => {
+export default ({ index, source, isSelected = false, onPress }: {
+  index: number, source: any, isSelected?: boolean, onPress: () => void,
+}) => {
   return (
-    <Container source={placeholderFox}>
-      <Badge>
-        <BadgeText>{index}</BadgeText>
-      </Badge>
-    </Container>
+    <TouchableWrapper onPress={onPress}>
+      <Container
+        source={source}
+        imageStyle={{
+          borderRadius: 10,
+          borderWidth: isSelected ? 3 : 1,
+          borderColor: isSelected ? '#7a5cc5' : '#999999',
+        }}
+      >
+        <Badge>
+          <BadgeText>{index}</BadgeText>
+        </Badge>
+      </Container>
+    </TouchableWrapper>
   );
 };
 
+const TouchableWrapper = styled.TouchableWithoutFeedback`
+`;
+
 const Container = styled.ImageBackground.attrs({
   resizeMode: 'cover',
-  imageStyle: {
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#999999',
-  },
 })`
   width: 85px;
   height: 80px;

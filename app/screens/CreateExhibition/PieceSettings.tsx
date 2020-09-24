@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImagePicker from 'react-native-image-picker';
 import styled from 'styled-components/native';
 
@@ -8,7 +8,9 @@ import CreatePieceButton from './CreatePieceButton';
 import Button from '../../components/Button';
 import { screenWidth } from '../../utils/screenSize';
 
-export default () => {
+export default ({ imageURLs }: { imageURLs: string[] }) => {
+  const [selectedImage, setSelectedImage] = useState('');
+
   const onClickCreatePiece = () => {
     ImagePicker.showImagePicker({
       title: '작품 업로드',
@@ -39,12 +41,20 @@ export default () => {
         <CreatePieceButton
           onPress={onClickCreatePiece}
         />
-        <PieceItem index={1} />
-        <PieceItem index={2} />
+        {imageURLs.map((image, index) => (
+          <PieceItem
+            key={`image-${index}`}
+            index={index + 1}
+            source={{ uri: image }}
+            isSelected={image === selectedImage}
+            onPress={() => setSelectedImage(image)}
+          />
+        ))}
+        <Dummy />
       </TopList>
       <Wrapper>
         <PieceContainer>
-          <PieceViewer />
+          <PieceViewer image={selectedImage} />
         </PieceContainer>
         <BottomButton isPrimary>
           작품 설정 시작하기
@@ -68,6 +78,11 @@ const TopList = styled.ScrollView.attrs({
   padding-left: 20px;
   margin-top: 10px;
   margin-bottom: 18px;
+`;
+
+const Dummy = styled.View`
+  width: 25px;
+  height: 20px;
 `;
 
 const Wrapper = styled.View`

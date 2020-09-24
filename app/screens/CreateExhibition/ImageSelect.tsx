@@ -8,9 +8,11 @@ import { screenWidth } from '../../utils/screenSize';
 
 const EmptyComponent: React.FC = () => null;
 
-interface IImageSelect {}
+interface IImageSelect {
+  setImageURLs: (imageURLs: string[]) => void;
+}
 
-const ImageSelect: React.FC<IImageSelect> = () => {
+const ImageSelect: React.FC<IImageSelect> = ({ setImageURLs }) => {
   const [photoSelectorReady, setPhotoSelectorReady] = useState(0);
   const bump = () => setPhotoSelectorReady(photoSelectorReady + 1);
 
@@ -35,13 +37,14 @@ const ImageSelect: React.FC<IImageSelect> = () => {
       });
   }, []);
 
-  const [image, setImage] = useState<any>({});
+  // const [image, setImage] = useState<any>({});
 
-  const onSelectPhoto = async (images: PhotoProps[], receivedImage: PhotoProps) => {
-    console.log('selected images:', images);
-    console.log('current image:', receivedImage);
-    const uri = receivedImage.uri;
-    setImage({ uri })
+  const onSelectPhoto = async (images: PhotoProps[], _: PhotoProps) => {
+    // console.log('selected images:', images);
+    // console.log('current image:', receivedImage);
+    // const uri = receivedImage.uri;
+    // setImage({ uri })
+    setImageURLs(images.map((v) => v.uri));
   };
 
   const renderSelectedMarker = (selectedNumber: number) => (

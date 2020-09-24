@@ -7,17 +7,23 @@ interface ISelected {
 
 interface IHashtag extends ISelected {
   children?: React.ReactNode;
+  onPress?: () => void;
 }
 
-export default ({ children, isSelected = false }: IHashtag) => {
+export default ({ children, isSelected = false, onPress }: IHashtag) => {
   return (
-    <Container isSelected={isSelected}>
-      <Text isSelected={isSelected}>
-        {children}
-      </Text>
-    </Container>
+    <TouchableWrapper onPress={onPress}>
+      <Container isSelected={isSelected}>
+        <Text isSelected={isSelected}>
+          {children}
+        </Text>
+      </Container>
+    </TouchableWrapper>
   );
 };
+
+const TouchableWrapper = styled.TouchableWithoutFeedback`
+`;
 
 const Container = styled.View<ISelected>`
   margin-right: 8px;

@@ -6,9 +6,13 @@ import { screenWidth } from '../../utils/screenSize';
 
 interface IFormHashtagInput {
   field?: string;
+  hashtags: string[];
+  setHashtags: (hashtags: string[]) => void;
 }
 
-export default ({ field }: IFormHashtagInput) => {
+const AllHashtags = ["수채화","일러스트","민화","판화","사진","캐리커쳐","조형","유화","수묵화","조각","콜라쥬","삽화","아크릴화","CG","소묘"];
+
+export default ({ field, hashtags, setHashtags }: IFormHashtagInput) => {
   return (
     <Wrapper>
       {field && (
@@ -17,12 +21,19 @@ export default ({ field }: IFormHashtagInput) => {
         </Field>
       )}
       <HashtagList>
-        <Hashtag>따뜻한</Hashtag>
-        <Hashtag isSelected>일러스트</Hashtag>
-        <Hashtag>조각</Hashtag>
-        <Hashtag>그림</Hashtag>
-        <Hashtag>만화</Hashtag>
-        <Hashtag>판화</Hashtag>
+        {AllHashtags.map((value) => (
+          <Hashtag
+            key={value}
+            onPress={() => {
+              if (hashtags.includes(value))
+                setHashtags(hashtags.filter((v: string) => v !== value));
+              else setHashtags([...hashtags, value]);
+            }}
+            isSelected={hashtags.includes(value)}
+          >
+            {value}
+          </Hashtag>
+        ))}
       </HashtagList>
     </Wrapper>
   );

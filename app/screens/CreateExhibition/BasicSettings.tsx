@@ -14,9 +14,19 @@ import { ImageSourcePropType } from 'react-native';
 interface IBasicSettings {
   coverImage: ImageSourcePropType | undefined;
   setCoverImage: (coverImage: ImageSourcePropType | undefined) => void;
+  title: string;
+  setTitle: (title: string) => void;
+  description: string;
+  setDescription: (description: string) => void;
+  hashtags: string[];
+  setHashtags: (hashtags: string[]) => void;
 }
 
-export default ({ coverImage, setCoverImage }: IBasicSettings) => {
+export default ({
+  coverImage, setCoverImage,
+  title, setTitle, description, setDescription,
+  hashtags, setHashtags,
+}: IBasicSettings) => {
   const onClickUpload = () => {
     ImagePicker.showImagePicker({
       title: '커버 사진 업로드',
@@ -70,6 +80,8 @@ export default ({ coverImage, setCoverImage }: IBasicSettings) => {
       <FormTextInput
         field="전시회 제목"
         placeholder="ex) 우주를 건너자"
+        value={title}
+        onChangeText={setTitle}
       />
       <FormTextInput
         field="전시회 소개"
@@ -77,9 +89,13 @@ export default ({ coverImage, setCoverImage }: IBasicSettings) => {
         textAlignVertical="top"
         multiline
         style={{ height: 131 }}
+        value={description}
+        onChangeText={setDescription}
       />
       <FormHashtagInput
         field="전시회 해시태그"
+        hashtags={hashtags}
+        setHashtags={setHashtags}
       />
     </Container>
   );

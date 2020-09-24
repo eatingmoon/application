@@ -4,13 +4,13 @@ import styled from 'styled-components/native';
 import placeholderFrame from '../../assets/placeholder-frame.png';
 import placeholderFox from '../../assets/placeholder-fox.png';
 
-export default () => {
+export default ({ image }: { image: string }) => {
   return (
     <FrameContainer
       source={placeholderFrame}
     >
       <PieceImage
-        source={placeholderFox}
+        source={{ uri: image }}
       />
     </FrameContainer>
   );
