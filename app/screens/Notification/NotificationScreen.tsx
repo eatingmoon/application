@@ -13,7 +13,11 @@ const NotificationScreen = () => {
     <RelativeContainer>
       <ScrollContainer>
         <Header />
-        <NotificationGroupContainer>
+        <NotificationGroup
+          period="알림이 없습니다."
+          notifications={[]}
+        />
+        {/* <NotificationGroupContainer>
           {notificationData.map(({ period, notifications }, index) => (
             <NotificationGroup
               key={`notification-group-${period}`}
@@ -22,7 +26,7 @@ const NotificationScreen = () => {
               style={{ marginTop: index ? 25.4 : 14 }}
             />
           ))}
-        </NotificationGroupContainer>
+        </NotificationGroupContainer> */}
       </ScrollContainer>
     </RelativeContainer>
   );

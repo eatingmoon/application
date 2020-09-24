@@ -1,17 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { TouchableOpacity } from 'react-native'
 import ImagePicker from 'react-native-image-picker';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
+import FormButton from './FormButton';
 import PieceItem from './PieceItem';
 import PieceViewer from './PieceViewer';
 import CreatePieceButton from './CreatePieceButton';
 import Button from '../../components/Button';
+import FormTextInput from './FormTextInput';
 import { screenWidth } from '../../utils/screenSize';
+import BottomModal from './BottomModal';
+
+import { frames, backgrounds } from './assets';
 
 export default ({ imageURLs }: { imageURLs: string[] }) => {
   const [selectedImage, setSelectedImage] = useState('');
+  const firstModalRef = useRef<any>();
+  const secondModalRef = useRef<any>();
 
   useEffect(() => setSelectedImage(imageURLs[0]), []);
+
+  const onPressOpenFirstModal = () => {
+    if (firstModalRef && firstModalRef.current)
+      firstModalRef?.current?.open();
+  }
+
+  const onPressOpenSecondModal = () => {
+    if (firstModalRef && firstModalRef.current)
+      firstModalRef?.current?.close();
+    if (secondModalRef && secondModalRef.current)
+      secondModalRef?.current?.open();
+  }
 
   const onClickCreatePiece = () => {
     ImagePicker.showImagePicker({
@@ -58,10 +78,86 @@ export default ({ imageURLs }: { imageURLs: string[] }) => {
         <PieceContainer>
           <PieceViewer image={selectedImage} />
         </PieceContainer>
-        <BottomButton isPrimary>
+        <BottomButton isPrimary onPress={onPressOpenFirstModal}>
           작품 설정 시작하기
         </BottomButton>
       </Wrapper>
+      <BottomModal
+        modalRef={firstModalRef}
+        height={414}
+        bottomComponent={(
+          <ButtonList>
+            <FormButton>이전</FormButton>
+            <FormButton
+              isPrimary
+              onPress={onPressOpenSecondModal}
+            >
+              스타일 설정
+            </FormButton>
+          </ButtonList>
+        )}
+      >
+        <FormTextInput
+          field="작품 이름"
+          placeholder="작품 이름을 입력해 주세요."
+        />
+        <FormTextInput
+          field="설명"
+          placeholder="작품 설명을 입력해 주세요."
+          style={{ height: 150 }}
+          multiline
+          textAlignVertical="top"
+        />
+      </BottomModal>
+      <BottomModal
+        modalRef={secondModalRef}
+        height={664}
+        closeOnSwipeDown={false}
+        bottomComponent={(
+          <ButtonList>
+            <FormButton
+              onPress={() => {
+                if (secondModalRef && secondModalRef.current)
+                  secondModalRef?.current?.close();
+                onPressOpenFirstModal();
+              }}
+            >
+              이전
+            </FormButton>
+            <FormButton
+              isPrimary
+              onPress={() => {
+                if (secondModalRef && secondModalRef.current)
+                  secondModalRef?.current?.close();
+              }}
+            >
+              닫기
+            </FormButton>
+          </ButtonList>
+        )}
+      >
+        <TabSelector>
+          <TabItem isSelected>
+            <TabItemText isSelected>
+              배경
+            </TabItemText>
+          </TabItem>
+          <TabItem>
+            <TabItemText>
+              액자
+            </TabItemText>
+          </TabItem>
+        </TabSelector>
+        <ScrollView>
+          <TouchableOpacity activeOpacity={1}>
+            <ItemList>
+              {backgrounds.map((image, index) => (
+                <ItemBackgroundImage source={image} key={index} />
+              ))}
+            </ItemList>
+          </TouchableOpacity>
+        </ScrollView>
+      </BottomModal>
     </Container>
   );
 };
@@ -113,4 +209,68 @@ const BottomButton = styled(Button).attrs({
   margin-top: 20px;
   padding: 16px 0;
   width: ${screenWidth * 0.85}px;
+`;
+
+const ButtonList = styled.View`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  flex-direction: row;
+`;
+
+const TabSelector = styled.View`
+  flex-direction: row;
+  width: 100%;
+`;
+
+interface IIsSelected {
+  isSelected?: boolean;
+}
+
+const TabItem = styled.View<IIsSelected>`
+  width: 50%;
+  padding: 10.5px;
+  align-items: center;
+  border-bottom-width: 3px;
+  border-bottom-color: #707070;
+
+  ${({ isSelected }) => isSelected && css`
+    border-bottom-color: #7a5cc4;
+  `};
+`;
+
+const TabItemText = styled.Text<IIsSelected>`
+  font-weight: bold;
+  font-size: 18px;
+  line-height: ${18 * 1.22}px;
+  color: #707070;
+
+  ${({ isSelected }) => isSelected && css`
+    color: #7a5cc4;
+  `};
+`;
+
+const ScrollView = styled.ScrollView`
+  flex: 1;
+  margin-top: 20.5px;
+  margin-bottom: 65px;
+`;
+
+const ItemList = styled.View`
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const ItemBackgroundImage = styled.Image<IIsSelected>`
+  width: 95px;
+  height: 110px;
+  margin-bottom: 28.3px;
+
+  ${({ isSelected }) => isSelected && css`
+    border: 3px solid #7a5cc4;
+  `};
 `;
