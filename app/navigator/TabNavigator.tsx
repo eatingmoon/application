@@ -21,7 +21,7 @@ const Tab = createBottomTabNavigator();
 const MainNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="ReviewExhibition"
+      initialRouteName="Main"
       tabBar={({ state, descriptors, navigation }) => (
         <TabBar
           state={state}

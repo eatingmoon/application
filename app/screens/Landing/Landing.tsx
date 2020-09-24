@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 
 import FormTextInput from "./FormTextInput";
@@ -7,12 +7,27 @@ import FormButton from "./FormButton";
 import TextButton from "./TextButton";
 import { screenWidth } from "../../utils/screenSize";
 import api from "../../utils/api";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, Alert } from "react-native";
 
 export default () => {
   const navigation = useNavigation();
   const [id, setId] = useState("smsmsmsmin");
   const [password, setPassword] = useState("Passw0rd!");
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const getAuth = async () => {
+      const accessToken = await AsyncStorage.getItem('accessToken');
+      if (accessToken) {
+        api.defaults.headers.common["Authorization"] = accessToken;
+        navigation.navigate('Main', { screen: 'Home' });
+        return;
+      }
+      setIsLoaded(true);
+    };
+
+    getAuth();
+  }, []);
 
   const handlePress = async () => {
     try {
@@ -31,9 +46,14 @@ export default () => {
         data: { message },
       },
     }) {
-      alert(message);
+      console.log(message);
+      Alert.alert(message);
     }
   };
+
+  if (!isLoaded) {
+    return null;
+  }
 
   return (
     <RelativeContainer>
