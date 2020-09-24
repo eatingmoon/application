@@ -20,6 +20,7 @@ export default ({ imageURLs }: { imageURLs: string[] }) => {
   const [isFrame, setIsFrame] = useState(false);
   const firstModalRef = useRef<any>();
   const secondModalRef = useRef<any>();
+  const [selectedBackgroundImage, setSelectedBackgroundImage] = useState<any>({});
 
   useEffect(() => setSelectedImage(imageURLs[0]), []);
 
@@ -77,7 +78,7 @@ export default ({ imageURLs }: { imageURLs: string[] }) => {
         <Dummy />
       </TopList>
       <Wrapper>
-        <PieceContainer>
+        <PieceContainer source={selectedBackgroundImage}>
           <PieceViewer image={selectedImage} frame={selectedFrame} />
         </PieceContainer>
         <BottomButton isPrimary onPress={onPressOpenFirstModal}>
@@ -167,8 +168,8 @@ export default ({ imageURLs }: { imageURLs: string[] }) => {
             ) : (
               <ItemList>
                 {backgrounds.map((image, index) => (
-                  <TouchableWrapper key={index}>
-                    <ItemImage source={image} />
+                  <TouchableWrapper key={index} onPress={() => setSelectedBackgroundImage(image)}>
+                    <ItemImage source={image} isSelected={selectedBackgroundImage === image} />
                   </TouchableWrapper>
                 ))}
               </ItemList>
@@ -207,7 +208,7 @@ const Wrapper = styled.View`
   height: 610px;
 `;
 
-const PieceContainer = styled.View`
+const PieceContainer = styled.ImageBackground`
   /* background-color: #EEE9E6; */
   background-color: white;
   position: relative;
