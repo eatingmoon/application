@@ -16,6 +16,8 @@ import { frames, backgrounds } from './assets';
 
 export default ({ imageURLs }: { imageURLs: string[] }) => {
   const [selectedImage, setSelectedImage] = useState('');
+  const [selectedFrame, setSelectedFrame] = useState<number | undefined>();
+  const [isFrame, setIsFrame] = useState(false);
   const firstModalRef = useRef<any>();
   const secondModalRef = useRef<any>();
 
@@ -76,7 +78,7 @@ export default ({ imageURLs }: { imageURLs: string[] }) => {
       </TopList>
       <Wrapper>
         <PieceContainer>
-          <PieceViewer image={selectedImage} />
+          <PieceViewer image={selectedImage} frame={selectedFrame} />
         </PieceContainer>
         <BottomButton isPrimary onPress={onPressOpenFirstModal}>
           작품 설정 시작하기
@@ -137,25 +139,41 @@ export default ({ imageURLs }: { imageURLs: string[] }) => {
         )}
       >
         <TabSelector>
-          <TabItem isSelected>
-            <TabItemText isSelected>
-              배경
-            </TabItemText>
-          </TabItem>
-          <TabItem>
-            <TabItemText>
-              액자
-            </TabItemText>
-          </TabItem>
+          <TouchableWrapper onPress={() => setIsFrame(false)}>
+            <TabItem isSelected={!isFrame}>
+              <TabItemText isSelected={!isFrame}>
+                배경
+              </TabItemText>
+            </TabItem>
+          </TouchableWrapper>
+          <TouchableWrapper onPress={() => setIsFrame(true)}>
+            <TabItem isSelected={isFrame}>
+              <TabItemText isSelected={isFrame}>
+                액자
+              </TabItemText>
+            </TabItem>
+          </TouchableWrapper>
         </TabSelector>
-        <ScrollView>
+        <ScrollView isFrame={isFrame}>
           <TouchableOpacity activeOpacity={1}>
-            <ItemList>
-              {backgrounds.map((image, index) => (
-                <ItemBackgroundImage source={image} key={index} />
-              ))}
-            </ItemList>
-          </TouchableOpacity>
+            {isFrame ? (
+              <ItemList>
+                {frames._1t1.map((image, index) => (
+                  <TouchableWrapper key={index} onPress={() => setSelectedFrame(index)}>
+                    <ItemImage source={image} isFrame isSelected={selectedFrame === index} />
+                  </TouchableWrapper>
+                ))}
+              </ItemList>
+            ) : (
+              <ItemList>
+                {backgrounds.map((image, index) => (
+                  <TouchableWrapper key={index}>
+                    <ItemImage source={image} />
+                  </TouchableWrapper>
+                ))}
+              </ItemList>
+            )}
+            </TouchableOpacity>
         </ScrollView>
       </BottomModal>
     </Container>
@@ -252,25 +270,50 @@ const TabItemText = styled.Text<IIsSelected>`
   `};
 `;
 
-const ScrollView = styled.ScrollView`
+interface IScrollView {
+  isFrame?: boolean;
+}
+
+const ScrollView = styled.ScrollView<IScrollView>`
   flex: 1;
   margin-top: 20.5px;
   margin-bottom: 65px;
+  width: ${screenWidth - 26.5}px;
+  margin-left: 4px;
+
+  ${({ isFrame }) => isFrame && css`
+    width: ${screenWidth - 18}px;
+    margin-left: 3px;
+  `};
 `;
 
 const ItemList = styled.View`
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
-const ItemBackgroundImage = styled.Image<IIsSelected>`
+interface IItemImage extends IIsSelected, IScrollView {}
+
+const ItemImage = styled.Image.attrs({
+  resizeMode: 'contain',
+})<IItemImage>`
   width: 95px;
   height: 110px;
   margin-bottom: 28.3px;
+  margin-right: 26.5px;
 
   ${({ isSelected }) => isSelected && css`
     border: 3px solid #7a5cc4;
   `};
+
+  ${({ isFrame }) => isFrame && css`
+    width: 101px;
+    height: 101px;
+    margin-right: 18px;
+  `};
+`;
+
+const TouchableWrapper = styled.TouchableWithoutFeedback`
 `;
