@@ -44,6 +44,7 @@ const Container = styled.View`
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  elevation: 33;
 `;
 
 const IconWrapper = styled.TouchableWithoutFeedback``;
