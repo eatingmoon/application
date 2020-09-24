@@ -17,7 +17,7 @@ export default () => {
 
   const steps = [
     { title: '기본 설정', component: <BasicSettings />, step: 1 },
-    { component: <ImageSelect />, bottomSpaceSize: 66 },
+    { title: '이미지 선택', component: <ImageSelect />, bottomSpaceSize: 66, ignoredWhenBack: true },
     { title: '작품 세부 설정', component: <PieceSettings />, step: 2 },
     { title: '미리보기', component: <Preview />, step: 3 },
   ];
@@ -27,7 +27,11 @@ export default () => {
   const onPressPreviousStep = () => {
     const nextStepIndex = currentStepIndex - 1;
     if (nextStepIndex >= 0) {
-      setCurrentStepIndex(nextStepIndex);
+      if (steps[nextStepIndex].ignoredWhenBack) {
+        setCurrentStepIndex(nextStepIndex - 1);
+      } else {
+        setCurrentStepIndex(nextStepIndex);
+      }
 
       if (nextStepIndex !== 2) {
         setRightButtonText('다음');

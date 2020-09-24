@@ -15,7 +15,7 @@ const ImageSelect: React.FC<IImageSelect> = () => {
   const bump = () => setPhotoSelectorReady(photoSelectorReady + 1);
 
   useEffect(() => {
-    async function hasAndroidPermission(): Promise<boolean> {
+    async function checkAndroidPermission(): Promise<boolean> {
       const permission = PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE;
       const hasPermission = await PermissionsAndroid.check(permission);
 
@@ -27,7 +27,7 @@ const ImageSelect: React.FC<IImageSelect> = () => {
       return true;
     }
 
-    hasAndroidPermission()
+    checkAndroidPermission()
       .then((status) => {
         if (status) {
           bump();
