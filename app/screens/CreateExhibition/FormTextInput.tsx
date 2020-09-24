@@ -20,7 +20,7 @@ export default ({ field, placeholder, value, onChangeText, style, ...props }: IF
           {field}
         </Field>
       )}
-      <Input
+      <TextInput
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
@@ -44,7 +44,7 @@ const Field = styled.Text`
   font-weight: bold;
 `;
 
-const Input = styled.TextInput`
+export const TextInput = styled.TextInput`
   border-radius: 11px;
   border: solid 1px #d4d4d4;
   background-color: #fcfcfc;

@@ -7,6 +7,7 @@ import Tag from '../../components/Tag';
 import ShareSection from './ShareSection';
 import ReviewSelector from './ReviewSelector';
 import Header from '../ViewExhibition/Header';
+import { TextInput } from '../CreateExhibition/FormTextInput';
 
 import { screenWidth } from "../../utils/screenSize";
 
@@ -42,8 +43,16 @@ const ReviewExhibition: React.FC = () => {
             <ReviewTitle>리뷰 남기기</ReviewTitle>
             <ReviewSelector />
           </ReviewHeader>
-          <ReviewTextbox />
-          <ReviewSubmitButton />
+          <ReviewTextbox
+            placeholder="전시회를 평가해 주세요."
+            multiline
+            textAlignVertical="top"
+          />
+          <ReviewSubmitButton
+            isPrimary
+          >
+            등록
+          </ReviewSubmitButton>
         </ReviewContainer>
         <ShareSection />
       </ScrollContainer>
@@ -124,16 +133,36 @@ const StyledTag = styled(Tag)`
 `;
 
 const ReviewContainer = styled.View`
+  margin-top: 58.3px;
 `;
 
 const ReviewHeader = styled.View`
+  width: ${screenWidth * 0.9}px;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 13.7px;
 `;
 
 const ReviewTitle = styled.Text`
+  font-weight: bold;
+  font-size: 18px;
+  line-height: ${18 * 1.22}px;
+  color: #000000;
 `;
 
-const ReviewTextbox = styled.TextInput`
+const ReviewTextbox = styled(TextInput)`
+  width: ${screenWidth * 0.9}px;
+  height: 131px;
+  margin-bottom: 30px;
 `;
 
-const ReviewSubmitButton = styled(Button)`
+const ReviewSubmitButton = styled(Button).attrs({
+  textStyle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    lineHeight: 20 * 1.2,
+  },
+})`
+  width: ${screenWidth * 0.9}px;
+  padding: 16px 0;
 `;
