@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { screenWidth } from '../../utils/screenSize';
 
@@ -14,11 +14,13 @@ interface IFormCheckbox extends IsSelected {
 
 export default ({ children, isSelected = false, onChange }) => {
   return (
-    <TouchableWrapper>
+    <TouchableWrapper onPress={() => onChange(!isSelected)}>
       <Container>
         <Wrapper>
-          <Field>{children}</Field>
-          <Checkbox></Checkbox>
+          <Field isSelected={isSelected}>{children}</Field>
+          <Checkbox isSelected={isSelected}>
+            {isSelected && (<CheckIcon source={require('../../assets/check.png')} />)}
+          </Checkbox>
         </Wrapper>
       </Container>
     </TouchableWrapper>
@@ -41,16 +43,32 @@ const Wrapper = styled.View`
   justify-content: space-between;
 `;
 
-const Field = styled.Text`
+const Field = styled.Text<IsSelected>`
   font-size: 17px;
   font-weight: bold;
   line-height: ${17 * 1.18}px;
-  color: #373d42;
+  color: #868E96;
+
+  ${({ isSelected }) => isSelected && css`
+    color: #373d42;
+  `};
 `;
 
-const Checkbox = styled.View`
+const Checkbox = styled.View<IsSelected>`
   width: 16px;
   height: 16px;
-  border: solid 1px #373d42;
+  border: solid 1px #D1D4D7;
   background-color: #ffffff;
+  position: relative;
+
+  ${({ isSelected }) => isSelected && css`
+    border: solid 1px #373d42;
+  `};
+`;
+
+const CheckIcon = styled.Image`
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: 3px;
 `;

@@ -41,19 +41,21 @@ export default () => {
       innerRef={scrollContainerRef}
     >
       {(currentForm.forms as IFormItem[]).map((value: IFormItem) => {
-        const { type, field, placeholder, key } = value;
+        const { type, field, placeholder, key, secureTextEntry, keyboardType } = value;
         if (type === 'text') {
           return (
             <FormTextInput
               key={key}
               field={field}
+              keyboardType={keyboardType}
               placeholder={placeholder}
+              secureTextEntry={secureTextEntry}
             />
           );
         } else if (type === 'checkbox') {
           return (
             <FormCheckbox
-              value={userInfo[key]}
+              isSelected={userInfo[key]}
               onChange={(v) => setUserInfo({ ...userInfo, [key]: v })}
             >
               {field}

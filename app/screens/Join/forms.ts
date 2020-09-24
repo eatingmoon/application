@@ -34,8 +34,8 @@ export default [
       bottom: 27,
     },
     forms: [
-      { type: 'text', field: '패스워드', placeholder: '6~12자 영문, 특문 및 숫자로 입력해 주세요.' },
-      { type: 'text', field: '패스워드 확인', placeholder: '위에서 입력한 패스워드를 재입력해 주세요.' },
+      { type: 'text', field: '패스워드', placeholder: '6~12자 영문, 특문 및 숫자로 입력해 주세요.', secureTextEntry: true },
+      { type: 'text', field: '패스워드 확인', placeholder: '위에서 입력한 패스워드를 재입력해 주세요.', secureTextEntry: true },
     ]
   },
   {
@@ -49,7 +49,7 @@ export default [
       bottom: 44,
     },
     forms: [
-      { type: 'text', field: '생년월일 8자리', placeholder: '8자리로 입력해 주세요. ex)19881213', key: 'birth' },
+      { type: 'text', keyboardType: 'numeric', field: '생년월일 8자리', placeholder: '8자리로 입력해 주세요. ex)19881213', key: 'birth' },
       {
         type: 'select',
         field: '성별',
