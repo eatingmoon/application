@@ -16,7 +16,7 @@ const ReviewExhibition: React.FC = () => {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const onPressSubmit = () => setIsReviewModalOpen(!isReviewModalOpen);
 
-  const [rating, setRating] = useState(4.5);
+  const [rating, setRating] = useState(5);
 
   return (
     <RelativeContainer>

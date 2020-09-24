@@ -35,7 +35,9 @@ const ReviewSelector: React.FC<IReviewSelector> = ({ value, setValue }) => {
         };
 
         return (
-          <IconWrapper>
+          <IconWrapper
+            key={`star-${index}`}
+          >
             <TouchableWrapper
               onPress={onPressStar}
             >
