@@ -11,8 +11,8 @@ import { AsyncStorage } from "react-native";
 
 export default () => {
   const navigation = useNavigation();
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
+  const [id, setId] = useState("smsmsmsmin");
+  const [password, setPassword] = useState("Passw0rd!");
 
   const handlePress = async () => {
     try {

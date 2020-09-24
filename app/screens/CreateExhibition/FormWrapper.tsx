@@ -30,7 +30,9 @@ export default ({
         {title}
         {progress && ` (${progress}/3)`}
       </BasicHeader>
-      <ScrollContainer>
+      <ScrollContainer
+        style={{ width: '100%' }}
+      >
         {children}
         <BottomSpace
           style={{ height: bottomSpaceSize, width: bottomSpaceSize }}

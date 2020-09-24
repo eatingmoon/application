@@ -8,6 +8,7 @@ import ImageSelect from './ImageSelect';
 import PieceSettings from './PieceSettings';
 import Preview from './Preview';
 import Modal from '../../components/Modal';
+import { ImageSourcePropType } from 'react-native';
 
 export default () => {
   const navigation = useNavigation();
@@ -15,8 +16,15 @@ export default () => {
   const [rightButtonText, setRightButtonText] = useState<string>('다음');
   const [isFinishModalVisible, setIsFinishModalVisible] = useState<boolean>(false);
 
+  const [coverImage, setCoverImage] = useState<ImageSourcePropType | undefined>(null);
+
   const steps = [
-    { title: '기본 설정', component: <BasicSettings />, step: 1 },
+    { title: '기본 설정', component: (
+      <BasicSettings
+        coverImage={coverImage}
+        setCoverImage={setCoverImage}
+      />
+    ), step: 1 },
     { title: '이미지 선택', component: <ImageSelect />, bottomSpaceSize: 66, ignoredWhenBack: true },
     { title: '작품 세부 설정', component: <PieceSettings />, step: 2 },
     { title: '미리보기', component: <Preview />, step: 3 },
