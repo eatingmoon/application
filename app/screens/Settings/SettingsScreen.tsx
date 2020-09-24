@@ -27,7 +27,10 @@ const settingItems = {
     { title: '내 신고함', icon: icons[4] },
   ],
   informations: [
-    { title: '널리 이용 가이드', icon: icons[5], route: 'Document', props: { uri: '' } },
+    {
+      title: '널리 이용 가이드', icon: icons[5], route: 'Document',
+      props: { uri: 'https://www.notion.so/d77bb0856145495588d31cae93009ce8' },
+    },
     {
       title: '서비스 이용 약관', icon: icons[6], route: 'Document',
       props: { uri: 'https://www.notion.so/90c4468627524b6d9ad6f688dfcd02c4' },
@@ -58,7 +61,9 @@ export default () => {
   return (
     <RelativeContainer>
       <ScrollContainer>
-        <Header>
+        <Header
+          onPressBack={() => navigation.goBack()}
+        >
           설정
         </Header>
         <Title style={{ marginTop: 18, }}>계정</Title>

@@ -7,7 +7,8 @@ import FormButton from "./FormButton";
 import TextButton from "./TextButton";
 import { screenWidth } from "../../utils/screenSize";
 import api from "../../utils/api";
-import { AsyncStorage, Alert } from "react-native";
+import { Alert } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage"
 
 export default () => {
   const navigation = useNavigation();
@@ -30,6 +31,10 @@ export default () => {
   }, []);
 
   const handlePress = async () => {
+    // FIXME
+    navigation.navigate("Main", { screen: "Home" });
+    return;
+
     try {
       console.log(id, password);
       const {
@@ -41,11 +46,9 @@ export default () => {
       await AsyncStorage.setItem("accessToken", accessToken);
       api.defaults.headers.common["Authorization"] = accessToken;
       navigation.navigate("Main", { screen: "Home" });
-    } catch ({
-      response: {
-        data: { message },
-      },
-    }) {
+    } catch (error) {
+      console.log(error);
+      const { response: { data: { message } } } = error;
       console.log(message);
       Alert.alert(message);
     }

@@ -15,8 +15,8 @@ export default ImageSelectedMarker;
 
 const Container = styled.View`
   position: absolute;
-  top: 5;
-  right: 5;
+  top: 5px;
+  right: 5px;
   justify-content: center;
   align-items: center;
   width: 25px;
