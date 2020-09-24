@@ -62,7 +62,7 @@ export default () => {
             <FormButton
               isPrimary
               style={{ marginTop: 10 }}
-              onPress={() => navigation.navigate("Main", { screen: "Home" })}
+              onPress={() => navigation.navigate('Join')}
             >
               회원가입
             </FormButton>

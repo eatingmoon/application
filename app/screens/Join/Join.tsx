@@ -21,7 +21,7 @@ export default () => {
 
   const onPressNextStep = () => {
     if (isLastStep) {
-      navigation.navigate('Home');
+      navigation.navigate('Main', { screen: 'Home' });
       return;
     }
     scrollContainerRef?.current?.scrollTo({ x: 0, y: 0, animated: true });

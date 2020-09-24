@@ -33,7 +33,7 @@ export default ({
 const ButtonWrapper = styled.View`
   width: 90%;
   margin: 0 auto;
-  margin-top: 118.5px;
+  margin-top: 32px;
   margin-bottom: 61px;
 `;
 
