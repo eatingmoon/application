@@ -28,15 +28,14 @@ export default ({ coverImage, setCoverImage }: IBasicSettings) => {
         path: 'images',
       },
     }, (response) => {
-      console.log('Response = ', response);
-
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        if (response.uri)
+        if (response.uri) {
           setCoverImage({ uri: response.uri });
+        }
       }
     });
   };

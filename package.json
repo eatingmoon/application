@@ -33,6 +33,7 @@
     "react-native-screens": "^2.11.0",
     "react-native-share": "^3.8.3",
     "react-native-svg": "^12.1.0",
+    "react-native-upload-aws-s3": "^0.8.1",
     "react-native-webview": "^10.9.0",
     "styled-components": "^5.2.0"
   },
