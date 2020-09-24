@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SvgXml as Icon } from 'react-native-svg';
 import styled from 'styled-components/native';
 
@@ -11,7 +11,10 @@ interface IReviewSelector {
   setValue: (value: number) => void;
 }
 
-const ReviewSelector: React.FC<IReviewSelector> = ({ value }) => {
+const ReviewSelector: React.FC<IReviewSelector> = ({ value, setValue }) => {
+  const [previousPressed, setPreviousPressed] = useState<number | undefined>();
+  const [previousValue, setPreviousValue] = useState<number>(0);
+
   return (
     <Container>
       {[...Array(5)].map((_, index) => {
@@ -20,9 +23,22 @@ const ReviewSelector: React.FC<IReviewSelector> = ({ value }) => {
           : (index < value && value < (index + 1))
             ? starHalf
             : starEmpty;
+
+        const onPressStar = () => {
+          const isPreviouslyPressed = (previousPressed !== undefined && previousPressed === index);
+          const currentValue = isPreviouslyPressed ?
+            ((previousValue === 0) ? 0.5 : (previousValue === 0.5) ? 1 : 0) : 0;
+          const starValue = (index * 1) + currentValue;
+          setPreviousPressed(index);
+          setPreviousValue(currentValue);
+          setValue(starValue);
+        };
+
         return (
           <IconWrapper>
-            <TouchableWrapper>
+            <TouchableWrapper
+              onPress={onPressStar}
+            >
               <Icon
                 width={26}
                 height={26}
