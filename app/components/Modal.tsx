@@ -18,6 +18,9 @@ interface IModal {
   rightButton?: React.ReactNode;
   isRightButtonPrimary?: boolean;
   onPressRightButton?: () => void;
+  centerButton?: React.ReactNode;
+  isCenterButtonPrimary?: boolean;
+  onPressCenterButton?: () => void;
 }
 
 const Modal: React.FC<IModal> = ({
@@ -32,6 +35,9 @@ const Modal: React.FC<IModal> = ({
   rightButton = '',
   isRightButtonPrimary = false,
   onPressRightButton,
+  centerButton = '',
+  isCenterButtonPrimary = false,
+  onPressCenterButton,
 }) => {
   const onBackdropPress = isConfirmedWhenBackdropPressed
     ? onPressConfirm : undefined;
@@ -48,7 +54,15 @@ const Modal: React.FC<IModal> = ({
       onPressRightButton();
     }
     if (onPressConfirm)
-    onPressConfirm();
+      onPressConfirm();
+  };
+
+  const onPressCenter = () => {
+    if (onPressCenterButton) {
+      onPressCenterButton();
+    }
+    if (onPressConfirm)
+      onPressConfirm();
   };
 
   return (
@@ -66,20 +80,29 @@ const Modal: React.FC<IModal> = ({
             {description}
           </Description>
         )}
-        <ButtonList>
+        {centerButton ? (
           <ModalButton
-            isPrimary={isLeftButtonPrimary}
-            onPress={onPressLeft}
+            isPrimary={isCenterButtonPrimary}
+            onPress={onPressCenter}
           >
-            {leftButton}
+            {centerButton}
           </ModalButton>
-          <ModalButton
-            isPrimary={isRightButtonPrimary}
-            onPress={onPressRight}
-          >
-            {rightButton}
-          </ModalButton>
-        </ButtonList>
+        ) : (
+          <ButtonList>
+            <ModalButton
+              isPrimary={isLeftButtonPrimary}
+              onPress={onPressLeft}
+            >
+              {leftButton}
+            </ModalButton>
+            <ModalButton
+              isPrimary={isRightButtonPrimary}
+              onPress={onPressRight}
+            >
+              {rightButton}
+            </ModalButton>
+          </ButtonList>
+        )}
       </ModalContainer>
     </RNModal>
   );
@@ -111,6 +134,7 @@ const Description = styled.Text`
   line-height: ${14 * 1.21}px;
   color: rgba(53, 53, 53, 0.73);
   margin-bottom: 38px;
+  text-align: center;
 `;
 
 const ButtonList = styled.View`

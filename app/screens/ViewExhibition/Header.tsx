@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { SvgXml } from "react-native-svg";
 import { useNavigation } from "@react-navigation/native";
 
 import styled from "styled-components/native";
 
+import ReportModal from "./ReportModal";
 import { screenWidth } from "../../utils/screenSize";
 
 import logoImage from "../../assets/logo.png";
@@ -12,19 +13,28 @@ import rightIconSvg from "../../assets/siren.svg";
 
 export default () => {
   const navigation = useNavigation();
+  const [isReportOpen, setIsReportOpen] = useState<boolean>(false);
 
   return (
-    <Container>
-      <IconWrapper
-        onPress={() => navigation.goBack()}
-      >
-        <LeftIcon />
-      </IconWrapper>
-      <LogoImage source={logoImage} />
-      <IconWrapper>
-        <RightIcon />
-      </IconWrapper>
-    </Container>
+    <>
+      <Container>
+        <IconWrapper
+          onPress={() => navigation.goBack()}
+        >
+          <LeftIcon />
+        </IconWrapper>
+        <LogoImage source={logoImage} />
+        <IconWrapper
+          onPress={() => setIsReportOpen(true)}
+        >
+          <RightIcon />
+        </IconWrapper>
+      </Container>
+      <ReportModal
+        isVisible={isReportOpen}
+        setIsVisible={setIsReportOpen}
+      />
+    </>
   );
 };
 
